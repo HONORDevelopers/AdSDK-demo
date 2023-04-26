@@ -1,0 +1,7 @@
+adapter为第三方广告封装层，依赖聚合sdk
+注意：仅能使用聚合SDK mediation的类或接口
+
+hnads:荣耀广告SDK
+hwads:华为广告SDK
+tiktok:字节广告SDK
+tencentad:腾讯广告SDK

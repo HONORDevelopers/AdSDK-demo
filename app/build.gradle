@@ -1,0 +1,40 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdk compileSdk_version
+
+    defaultConfig {
+        applicationId "com.hihonor.ads.group.demo"
+        minSdk minSdk_version
+        targetSdk targetSdk_version
+        versionCode app_version_code
+        versionName app_version_name
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation androidx_appcompat
+    implementation androidx_material
+    implementation constraintlayout
+    implementation navigation_fragment
+    implementation navigation_ui
+    implementation glide
+    annotationProcessor glide_compiler
+    implementation lifecycle_livedata
+
+}

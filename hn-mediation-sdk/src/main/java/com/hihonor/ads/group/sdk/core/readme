@@ -1,0 +1,10 @@
+core层为核心层，流量控制与分配层。有一下核心业务模块/类
+
+----------------------------------------impl-----------------------------------
+xxManager(如SpManager):对外提供广告加载，销毁，广告回调等基本接口能力
+xxInstance:广告层级管理类，管理媒体在ADN的appkey，广告位id，广告层级，adapter，mediationRule等元素
+HybridCacheManager->AbstractHybridAds：Hb竞价与瀑布流混合比价管理类
+InventoryCacheManager->AbstractInventoryAds：广告库存管理类
+----------------------------------------bid-----------------------------------
+BidC2SManager：客户端竞价
+BidS2SManager：服务端竞价
