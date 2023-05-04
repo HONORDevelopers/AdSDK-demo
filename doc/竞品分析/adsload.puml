@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+业务 ->AbstractAdsApi: loadAds 请求加载广告
+AbstractAdsApi->AbstractAdsApi:判断是否阻塞，是否需要填充（广告库存）\nstartGetInsOrder
+alt PROMOTION广告请求
+AbstractAdsApi->AbstractAdsApi:startLoadAdsImpl
+else
+AbstractAdsApi->BidManager:非PROMOTION ，s2sBid 服务端竞价
+BidManager->BidS2SManager:bid 服务端竞价
+BidS2SManager->BidS2SManager:getBidInstanceToken 服务端竞价
+BidS2SManager->CustomAdsAdapter:getBiddingToken。（未看到获取到价格）
+BidS2SManager-> AbstractAdsApi:onBidS2SComplete获取到BidResponse
+AbstractAdsApi ->WaterFallHelper:瀑布流请求wfRequest
+WaterFallHelper ->AdRequest: post网络请求
+AdRequest->AbstractAdsApi:onRequestSuccess(response)
+AbstractAdsApi->OmCacheManager:saveWaterfallData 缓存瀑布流数据
+AbstractAdsApi->AbstractAdsApi:onInternalRequestSuccess 处解析Response\n1,根据c2s字段获取C2S的Instance；
+alt Instance为空
+AbstractAdsApi->AbstractAdsApi:则直接startLoadAds
+AbstractAdsApi->AbstractAdsApi:startLoadAdsImpl
+else
+AbstractAdsApi->BidManager:c2sBid(Admost,FlatAds,Helium,Inmobi,PubNative支持)
+BidManager->BidC2SManager:bid
+BidC2SManager->BidC2SManager:executeBid
+BidC2SManager->CustomAdsAdapter:getBidResponse，返回各种类型广告的竞价结果
+CustomAdsAdapter->BidC2SManager:onBidSuccess 回调结果
+BidC2SManager->BidC2SManager:callbackBidResult
+BidC2SManager->AbstractAdsApi:onBidC2SComplete
+AbstractAdsApi->AbstractAdsApi:startLoadAds
+AbstractAdsApi->AbstractAdsApi:startLoadAdsImpl
+end
+end
+alt startLoadAdsImpl
+AbstractAdsApi->AbstractAdsApi:startLoadAdsImpl
+AbstractAdsApi->AbstractAdsApi:AbstractInventoryAds遍历totalIns\nAbstractHybridAds遍历mTotalIns\nloadInsAndSendEvent
+AbstractHybridAds->XXManager:insLoad,转化指定的instance
+XXManager->XXInstance:loadXX,加载指定广告类型，比如loadBn
+XXInstance->CustomAdsAdapter:loadBannerAd 加载广告
+CustomAdsAdapter->XXManager:回调加载结果
+XXManager->业务:回调加载结果
+end
+@enduml

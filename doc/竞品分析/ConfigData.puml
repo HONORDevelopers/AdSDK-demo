@@ -1,0 +1,37 @@
+@startyaml
+d: "0：release模式，1 debug模式"
+coa: "暂时没用"
+ri: "定时初始化配置信息的间隔时间"
+ics: "曝光回调开关，0-off, 1-on"
+api: “ApiConfigurations,广告api配置”
+events: “事件id，类似我们宏替换”
+ms: “SparseArray<Mediation>聚合网络信息”
+Map<String, Placement> pls : “广告位信息”
+    - id： 广告位id
+	- name： 广告位名称
+	- t：   广告类型
+	- main： 是否是主要 1主要，优先请求
+	- scenes： 用于标记应用中广告位置或场景
+	- pt： 从ADN获取广告最大超时时间
+	- bs： 分组大小（batchSize for Instance, for Banner&Native   2）
+	- fo： Fan Out flag, immediate Ready mode, for Banner&Native     1
+	- cs： 缓存大小
+	- rf： RewardVideo 刷新间隔时间 默认30s
+	- SparseArray<BaseInstance> insMap:
+	   -reqId： 请求id
+	   -key： placement key
+	   -grpIndex： group index
+	   -grpIndex： own index
+	   -isFirst： is 1st in the group
+	   -object： data for instance storage
+	   -appKey： 媒体appkey
+	   -bidResponse： 竞价返回信息
+	   -mAdExpiredTime： 广告过期时间 时间单位 秒
+	   -mPlacementId： 广告位id
+	   - CustomAdsAdapter mAdapter： ADN适配器
+	- rlw： Banner广告刷新间隔时间
+	- oriData： 暂时不知道干嘛的
+	- hasHb： 是否有头部竞价
+	- wfAbt： 瀑布流竞价？
+	- wfAbtId： 瀑布流竞价id？
+@endyaml

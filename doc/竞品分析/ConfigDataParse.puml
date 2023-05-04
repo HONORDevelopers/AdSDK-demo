@@ -1,0 +1,13 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+
+
+InitImp -> ConfigurationHelper: parseFormServerResponse\n 解析配置信息
+
+ConfigurationHelper -> ConfigurationHelper:parseMediationConfigurations 解析聚合网络信息
+ConfigurationHelper -> ConfigurationHelper:formatScenes 解析场景信息
+ConfigurationHelper -> ConfigurationHelper:formatInstances 解析广告层级信息
+@enduml

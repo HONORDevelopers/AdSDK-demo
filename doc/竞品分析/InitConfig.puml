@@ -1,0 +1,8 @@
+@startyaml
+mAppKey: "mAppKey,广告平台创建媒体申请"
+mInitHost: "初始化接口域名地址（非外部传入，reInit从configData获取）"
+mChannel: "初始化接口渠道信息（非外部传入，reInit从configData获取）"
+logEnable: "是否允许打印日志"
+mPreloadAdTypes: “List<OmAds.AD_TYPE>，广告预加载类型”
+mUseCacheAdTypess: “List<OmAds.CACHE_TYPE>，使用缓存广告类型”
+@endyaml
