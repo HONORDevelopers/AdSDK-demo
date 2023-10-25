@@ -5,12 +5,14 @@
 apply from: 'version.gradle'
 buildscript {
     repositories {
-        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/Product-binaryuikithihonor-release'}//---私仓放maven-virtual上面
-        maven { url "http://cmc.cloudartifact.dragon.tools.hihonor.com/artifactory/maven-public" }
-        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-remote' }//开源
-        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-public' }//自研
-        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-virtual/' }
-        maven { url 'https://dl.openmediation.com/omcenter/' }
+        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-public' }
+        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-remote' }
+        flatDir {
+            dirs 'libs'
+        }
+        jcenter{
+            url rootProject.file('repo')
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.3"
@@ -20,14 +22,13 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/Product-binaryuikithihonor-release'}//---私仓放maven-virtual上面
-        maven { url "http://cmc.cloudartifact.dragon.tools.hihonor.com/artifactory/maven-public" }
-        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-remote' }//开源
-        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-public' }//自研
-        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-virtual/' }
-        maven { url 'https://dl.openmediation.com/omcenter/' }
+        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-public' }
+        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-remote' }
         flatDir {
             dirs 'libs'
+        }
+        jcenter{
+            url rootProject.file('repo')
         }
     }
 }

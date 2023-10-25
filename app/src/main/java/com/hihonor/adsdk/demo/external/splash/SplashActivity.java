@@ -1,0 +1,146 @@
+package com.hihonor.adsdk.demo.external.splash;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+
+import com.hihonor.ads.splash.SplashAdLoad;
+import com.hihonor.adsdk.base.AdSlot;
+import com.hihonor.adsdk.base.api.splash.SplashAdLoadListener;
+import com.hihonor.adsdk.base.api.splash.SplashExpressAd;
+import com.hihonor.adsdk.base.callback.AdListener;
+import com.hihonor.adsdk.base.log.HiAdsLog;
+import com.hihonor.adsdk.demo.external.R;
+import com.hihonor.adsdk.demo.external.common.BaseActivity;
+import com.hihonor.adsdk.demo.external.utils.GlobalConfig;
+
+public class SplashActivity extends BaseActivity {
+    private final static String TAG = "SplashActivityTAG";
+    private final String slotId = "1698591998676959232";
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
+        initView();
+    }
+
+    public void initView() {
+        findViewById(R.id.bt_load_ad_0).setOnClickListener(view -> {
+            startActivity(new Intent(SplashActivity.this, SplashDefaultActivity.class));
+            finish();
+        });
+        findViewById(R.id.bt_load_ad_1).setOnClickListener(view -> {
+            startActivity(new Intent(SplashActivity.this, SplashSelfActivity.class));
+            finish();
+        });
+
+        findViewById(R.id.bt_load_ad_pre_cache).setOnClickListener(view -> {
+            obtainAd();
+        });
+    }
+
+    private void obtainAd() {
+        AdSlot adSlot = new AdSlot.Builder()
+                .setSlotId(slotId)
+                .setLoadType(GlobalConfig.AD_LOAD_TYPE.PRECACHE_REQUEST)
+                .build();
+        SplashAdLoad load = new SplashAdLoad.Builder()
+                .setSplashAdLoadListener(new AdLoadListener())
+                .setAdSlot(adSlot)
+                .build();
+        load.loadAd();
+    }
+
+    private class AdLoadListener implements SplashAdLoadListener {
+
+        @Override
+        public void onLoadSuccess(SplashExpressAd splashExpressAd) {
+            HiAdsLog.i(TAG, "onLoadSuccess, ad load success");
+            splashExpressAd.setAdListener(new MyAdListener());
+        }
+
+        /**
+         * 广告加载失败
+         *
+         * @param code 错误码
+         * @param errorMsg 错误提示信息
+         */
+        @Override
+        public void onFailed(String code, String errorMsg) {
+            HiAdsLog.i(TAG, "onFailed: code: " + code + ", errorMsg: " + errorMsg);
+        }
+    }
+
+    /**
+     * 广告事件监听器
+     */
+    private class MyAdListener extends AdListener {
+
+        /**
+         * 广告曝光时回调
+         */
+        @Override
+        public void onAdImpression() {
+            super.onAdImpression();
+            HiAdsLog.i(TAG, "onAdImpression...");
+            Toast.makeText(SplashActivity.this, "展示成功", Toast.LENGTH_SHORT).show();
+        }
+
+        /**
+         * 广告曝光失败时回调
+         *
+         * @param msg 曝光失败信息
+         */
+        @Override
+        public void onAdImpressionFailed(String msg) {
+            super.onAdImpressionFailed(msg);
+            HiAdsLog.i(TAG, "onAdImpressionFailed, msg: " + msg);
+            Toast.makeText(SplashActivity.this, "展示失败", Toast.LENGTH_SHORT).show();
+        }
+
+        /**
+         * 广告被点击时回调
+         */
+        @Override
+        public void onAdClicked() {
+            super.onAdClicked();
+            HiAdsLog.i(TAG, "onAdClicked...");
+            Toast.makeText(SplashActivity.this, "点击广告", Toast.LENGTH_SHORT).show();
+        }
+
+        /**
+         * 广告关闭时回调
+         */
+        @Override
+        public void onAdClosed() {
+            super.onAdClosed();
+            HiAdsLog.i(TAG, "onAdClosed...");
+            Toast.makeText(SplashActivity.this, "关闭广告", Toast.LENGTH_SHORT).show();
+        }
+
+        /**
+         * 开屏广告点击跳过或倒计时结束时回调
+         *
+         * @param type 0：点击跳过、1：倒计时结束
+         */
+        @Override
+        public void onAdSkip(int type) {
+            super.onAdSkip(type);
+            HiAdsLog.i(TAG, "onAdSkip, type: " + type);
+            Toast.makeText(SplashActivity.this, "跳过广告", Toast.LENGTH_SHORT).show();
+        }
+
+        /**
+         * 广告成功跳转小程序时回调
+         */
+        @Override
+        public void onMiniAppStarted() {
+            super.onMiniAppStarted();
+            HiAdsLog.i(TAG, "onMiniAppStarted...");
+            Toast.makeText(SplashActivity.this, "跳转小程序", Toast.LENGTH_SHORT).show();
+        }
+    }
+}

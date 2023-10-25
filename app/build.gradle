@@ -1,23 +1,39 @@
+/*
+ * Copyright (c) Honor Device Co., Ltd. 2022-2022. All rights reserved.
+ */
+
 plugins {
     id 'com.android.application'
 }
-
+apply from: "${rootProject.rootDir.path}/buildTypesConfig.gradle"
 android {
     compileSdk compileSdk_version
 
     defaultConfig {
-        applicationId "com.hihonor.ads.group.demo"
+        applicationId "com.hihonor.adsdk.demo.external"
         minSdk minSdk_version
         targetSdk targetSdk_version
         versionCode app_version_code
         versionName app_version_name
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    signingConfigs {
+        config {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('../jks/debug.keystore')
+            storePassword 'android'
+        }
+    }
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+            signingConfig signingConfigs.config
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.config
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -25,16 +41,43 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding true
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
 }
-
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
 dependencies {
+    implementation lottie
     implementation androidx_appcompat
     implementation androidx_material
-    implementation constraintlayout
-    implementation navigation_fragment
-    implementation navigation_ui
-    implementation glide
-    annotationProcessor glide_compiler
-    implementation lifecycle_livedata
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'androidx.navigation:navigation-ui:2.3.5'
+
+    implementation honor_ads_picture_text
+    implementation honor_ads_banner
+    implementation honor_ads_native
+    implementation honor_ads_splash
+    implementation honor_ads_reward
+    implementation honor_ads_interstitial
+    implementation honor_ads_tt_util
+    implementation honor_ads_tt
+
+
+    implementation files('../aars/open_ad_sdk_5.6.0.2.aar')
+    implementation files('../aars/ads-tools-1.0.10.311.aar')
+
+    //此条注释误删
+//    implementation hw_detect_sdk
 
 }
