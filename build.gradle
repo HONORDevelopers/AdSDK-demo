@@ -5,8 +5,8 @@
 apply from: 'version.gradle'
 buildscript {
     repositories {
-        google()
-        mavenCentral()
+        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-public' }
+        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-remote' }
         flatDir {
             dirs 'libs'
         }
@@ -22,8 +22,8 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        mavenCentral()
+        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-public' }
+        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-remote' }
         flatDir {
             dirs 'libs'
         }
