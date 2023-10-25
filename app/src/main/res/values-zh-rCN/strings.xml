@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright (c) Honor Device Co., Ltd. 2022-2022. All rights reserved.
+  -->
+
+<resources>
+    <string name="app_name">荣耀广告SDK集成Demo</string>
+
+    <!--    首页item-->
+    <string name="app_native_ad">原生广告</string>
+    <string name="app_banner_ad">横幅广告</string>
+    <string name="app_reward_ad">激励广告</string>
+    <string name="app_interstital_ad">插屏广告</string>
+    <string name="app_banner_default">默认模板</string>
+    <string name="app_banner_gallery_self">自渲染轮播图</string>
+    <string name="app_banner_gallery">轮播图</string>
+    <string name="app_picture_text_ad">信息流广告</string>
+    <string name="app_picture_text_template_render_ad">模板渲染</string>
+    <string name="app_picture_text_self_render_ad">自渲染</string>
+    <string name="app_picture_text_install_ad">下载安装类广告</string>
+    <string name="app_load_ad">加载广告</string>
+    <string name="app_ad_close_tip">广告关闭</string>
+    <string name="app_download">下载</string>
+    <string name="app_replay">重播</string>
+</resources>
