@@ -1,7 +1,0 @@
-聚合SDK与ADN的交互的枢纽：
-1，adapter只能调用这个模块的代码。
-2，这个模块代码不做混淆处理。
-
-核心业务类：
-CustomAdsAdapter：各个adpater的父类，定义了各类型广告的初始化，加载，显示以及ADN 版本，id等接口
-AdapterManager:管理各类型的adapter，创建，加载

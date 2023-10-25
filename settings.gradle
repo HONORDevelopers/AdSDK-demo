@@ -1,8 +1,2 @@
 rootProject.name = "Ads-Group-Sdk"
 include ':app'
-include ':adapter:tiktok'
-include ':adapter:hwads'
-include ':adapter:tencentad'
-include ':adapter:hnads'
-include ':hn-mediation-sdk'
-include ':hn-mediation-sdk'

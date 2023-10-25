@@ -1,3 +1,27 @@
+<!--
+  ~ Copyright (c) Honor Device Co., Ltd. 2022-2022. All rights reserved.
+  -->
+
 <resources>
-    <string name="app_name">Ads-Group-Sdk</string>
+    <string name="app_name">Honor Ad Platform</string>
+
+    <!--    首页item-->
+    <string name="app_native_ad">Native Ads</string>
+    <string name="app_reward_ad">Reward Ads</string>
+    <string name="app_banner_ad">Banner Ads</string>
+    <string name="app_interstital_ad">Interstital Ads</string>
+    <string name="app_banner_default">默认模板</string>
+    <string name="app_banner_gallery_self">自渲染轮播图</string>
+    <string name="app_banner_gallery">轮播图</string>
+    <string name="app_picture_text_ad">Feed Ads</string>
+    <string name="app_picture_text_template_render_ad">Feed Template Render Ads</string>
+    <string name="app_picture_text_self_render_ad">Feed Self Render Ads</string>
+    <string name="app_picture_text_install_ad">Install Ads</string>
+    <string name="app_load_ad">Load ads</string>
+    <string name="app_ad_close_tip">Closed Ad</string>
+    <string name="app_download">Download</string>
+    <string name="app_replay">Replay</string>
+
+    <string name="ads_app_magic_text_font_family_medium" translatable="false">HnChinese-medium</string>
+    <string name="ads_app_magic_text_font_family_regular" translatable="false">sans-serif</string>
 </resources>
