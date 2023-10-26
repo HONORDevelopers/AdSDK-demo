@@ -8,6 +8,7 @@ plugins {
 apply from: "${rootProject.rootDir.path}/buildTypesConfig.gradle"
 android {
     compileSdk compileSdk_version
+    buildToolsVersion buildTools_version
 
     defaultConfig {
         applicationId "com.hihonor.adsdk.demo.external"
