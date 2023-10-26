@@ -6,7 +6,8 @@
   "description": "",
   "version":"1.0.3.100",
   "fileSuffix":"apk",
-  "packageName":"app-env_devp-debug.apk",
+  "packagePath": "/app/build/outputs/apk/env_prod/debug",
+  "packageName":"app-env_prod-debug.apk",
   "type":"microService",
   "processes": {
     "AdPlatformSdkDemo": {
