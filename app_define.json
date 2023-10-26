@@ -1,0 +1,17 @@
+{
+  "fileVersion": "1",
+  "name": "AdPlatformSdkDemo",
+  "serviceId": "78d677a7b6cd4e8d9a462800466f7cfb",
+  "label": "",
+  "description": "",
+  "version":"1.0.3.100",
+  "fileSuffix":"apk",
+  "packageName":"app-env_devp-debug.apk",
+  "type":"microService",
+  "processes": {
+    "AdPlatformSdkDemo": {
+      "subscribes": [
+      ]
+    }
+  }
+}
