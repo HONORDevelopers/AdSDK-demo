@@ -1,0 +1,10 @@
+<version_set type="microService">
+
+    <software>
+        <type>test</type>
+        <name>jre</name>
+        <version>1.8</version>
+        <path>http://clouddragon.ipd.hihonor.com/artifact/artifact/package?type_name=jre,maven,_maven</path>
+    </software>
+
+</version_set>

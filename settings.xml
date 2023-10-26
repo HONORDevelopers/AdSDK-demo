@@ -1,0 +1,107 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <localRepository>/clouddragonData/.m2/repository</localRepository>
+    <servers>
+        <server>
+            <id>jalor</id>
+            <username>artifact-guest</username>
+            <password>artifact@123</password>
+        </server>
+
+
+        <server>
+            <id>hihonor_Release</id>
+            <username>maven-user</username>
+            <password>maven-user@honor2021</password>
+        </server>
+
+
+        <server>
+            <id>hihonor_Snapshot</id>
+            <username>maven-user</username>
+            <password>maven-user@honor2021</password>
+        </server>
+
+    </servers>
+
+    <mirrors>
+        <mirror>
+            <id>hihonor-mirror</id>
+            <mirrorOf>*,!honor_remote,!honor_public,!jalor,!plugin-repo-remote,!plugin-repo-public</mirrorOf>
+            <name>Nexus for Hihonor Enterprise</name>
+            <url>http://cloudartifact.ipd.hihonor.com/artifactory/maven-remote/</url>
+        </mirror>
+    </mirrors>
+
+    <profiles>
+        <profile>
+            <id>honor_profile</id>
+            <properties>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+            </properties>
+            <repositories>
+
+                <repository>
+                    <id>honor_remote</id>
+                    <url>http://cloudartifact.ipd.hihonor.com/artifactory/maven-remote/</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </snapshots>
+                </repository>
+
+
+                <repository>
+                    <id>honor_public</id>
+                    <url>http://cloudartifact.ipd.hihonor.com/artifactory/maven-public/</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </snapshots>
+                </repository>
+
+
+
+            </repositories>
+
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>plugin-repo-remote</id>
+                    <url>http://cloudartifact.ipd.hihonor.com/artifactory/maven-remote/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>plugin-repo-public</id>
+                    <url>http://cloudartifact.ipd.hihonor.com/artifactory/maven-public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>honor_profile</activeProfile>
+    </activeProfiles>
+</settings>
