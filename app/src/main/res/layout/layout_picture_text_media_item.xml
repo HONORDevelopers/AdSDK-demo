@@ -12,7 +12,7 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         android:layout_gravity="center"
-        android:text="媒体数据"/>
+        android:text="@string/media_data"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

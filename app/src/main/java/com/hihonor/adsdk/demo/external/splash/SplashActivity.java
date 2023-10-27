@@ -86,7 +86,8 @@ public class SplashActivity extends BaseActivity {
         public void onAdImpression() {
             super.onAdImpression();
             HiAdsLog.i(TAG, "onAdImpression...");
-            Toast.makeText(SplashActivity.this, "展示成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashActivity.this,
+                    getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -98,7 +99,8 @@ public class SplashActivity extends BaseActivity {
         public void onAdImpressionFailed(String msg) {
             super.onAdImpressionFailed(msg);
             HiAdsLog.i(TAG, "onAdImpressionFailed, msg: " + msg);
-            Toast.makeText(SplashActivity.this, "展示失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashActivity.this,
+                    getString(R.string.ad_impression_failed), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -108,7 +110,8 @@ public class SplashActivity extends BaseActivity {
         public void onAdClicked() {
             super.onAdClicked();
             HiAdsLog.i(TAG, "onAdClicked...");
-            Toast.makeText(SplashActivity.this, "点击广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashActivity.this,
+                    getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -118,7 +121,8 @@ public class SplashActivity extends BaseActivity {
         public void onAdClosed() {
             super.onAdClosed();
             HiAdsLog.i(TAG, "onAdClosed...");
-            Toast.makeText(SplashActivity.this, "关闭广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashActivity.this,
+                    getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -130,7 +134,8 @@ public class SplashActivity extends BaseActivity {
         public void onAdSkip(int type) {
             super.onAdSkip(type);
             HiAdsLog.i(TAG, "onAdSkip, type: " + type);
-            Toast.makeText(SplashActivity.this, "跳过广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashActivity.this,
+                    getString(R.string.ad_skip), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -140,7 +145,8 @@ public class SplashActivity extends BaseActivity {
         public void onMiniAppStarted() {
             super.onMiniAppStarted();
             HiAdsLog.i(TAG, "onMiniAppStarted...");
-            Toast.makeText(SplashActivity.this, "跳转小程序", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashActivity.this,
+                    getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
         }
     }
 }

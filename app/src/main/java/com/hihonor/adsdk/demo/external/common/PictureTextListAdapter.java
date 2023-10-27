@@ -50,8 +50,6 @@ public class PictureTextListAdapter extends RecyclerView.Adapter<PictureTextList
         public void bindData(PictureTextExpressAd pictureTextExpressAd) {
             ViewGroup viewGroup = (ViewGroup) itemView;
             viewGroup.removeAllViews();
-            //must 添加广告view
-            viewGroup.addView(pictureTextExpressAd.getExpressAdView());
             // 获取广告视图
             View expressAdView = pictureTextExpressAd.getExpressAdView();
             // 检查广告视图是否已经有父视图，如果有则移除

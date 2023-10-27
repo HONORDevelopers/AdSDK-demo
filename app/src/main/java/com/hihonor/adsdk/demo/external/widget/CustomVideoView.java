@@ -141,6 +141,7 @@ public class CustomVideoView extends VideoView {
             retriever.setDataSource(mUri.toString());
             //3.获取音视频资源总时长
             String time = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+            retriever.release();
             if (TextUtils.isEmpty(time)) {
                 return 0;
             }

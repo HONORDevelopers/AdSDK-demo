@@ -106,18 +106,18 @@ public class PictureTextSelfRenderActivity extends BaseActivity {
             for (int i = 0; i < adViewList.size(); i++) {
                 createMediaData(i);
                 PictureTextExpressAd expressAd = adViewList.get(i);
-                HiAdsLog.i(TAG, "是否有模板视图 %s position=%s,： ", expressAd.getExpressAdView(), i);
+                HiAdsLog.i(TAG, "isHaveTemplateView %s position=%s,： ", expressAd.getExpressAdView(), i);
                 PictureMediaDataBean pictureMediaDataBean = new PictureMediaDataBean();
                 String itemName = expressAd.getRequestId();
                 pictureMediaDataBean.setItemName(itemName);
                 pictureMediaDataBean.setExpressAd(expressAd);
-                Log.i(TAG,"应用名称:" + expressAd.getBrand()
-                        + "\t\n应用版本号：" + expressAd.getAppVersion()
-                        + "\t\n应用包名：" + expressAd.getAppPackage()
-                        + "\t\n开发者公司名称：" + expressAd.getDeveloperName()
-                        + "\t\n隐私协议超链：" + expressAd.getPermissionsUrl()
-                        + "\t\n权限列表超链：" + expressAd.getPrivacyAgreementUrl()
-                        + "\r\n主页超链：" + expressAd.getHomePage());
+                Log.i(TAG,getString(R.string.application_name) + expressAd.getBrand()
+                        + getString(R.string.application_version) + expressAd.getAppVersion()
+                        + getString(R.string.app_package) + expressAd.getAppPackage()
+                        + getString(R.string.developer_name) + expressAd.getDeveloperName()
+                        + getString(R.string.permissions_url) + expressAd.getPermissionsUrl()
+                        + getString(R.string.privacy_agreement_url) + expressAd.getPrivacyAgreementUrl()
+                        + getString(R.string.home_page) + expressAd.getHomePage());
                 if (expressAd.hasVideo()) {
                     // 视频广告
                     if (i % 2 == 0) {
@@ -151,8 +151,8 @@ public class PictureTextSelfRenderActivity extends BaseActivity {
         public void onAdClosed() {
             super.onAdClosed();
             HiAdsLog.i(TAG, "onAdClosed...");
-            Toast.makeText(PictureTextSelfRenderActivity.this, "广告关闭", Toast.LENGTH_SHORT)
-                .show();
+            Toast.makeText(PictureTextSelfRenderActivity.this,
+                            getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -162,8 +162,8 @@ public class PictureTextSelfRenderActivity extends BaseActivity {
         public void onAdClicked() {
             super.onAdClicked();
             HiAdsLog.i(TAG, "onAdClicked...");
-            Toast.makeText(PictureTextSelfRenderActivity.this, "点击广告", Toast.LENGTH_SHORT)
-                .show();
+            Toast.makeText(PictureTextSelfRenderActivity.this,
+                    getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -173,8 +173,8 @@ public class PictureTextSelfRenderActivity extends BaseActivity {
         public void onAdImpression() {
             super.onAdImpression();
             HiAdsLog.i(TAG, "onAdImpression...");
-            Toast.makeText(PictureTextSelfRenderActivity.this, "展示成功", Toast.LENGTH_SHORT)
-                .show();
+            Toast.makeText(PictureTextSelfRenderActivity.this,
+                    getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -184,8 +184,8 @@ public class PictureTextSelfRenderActivity extends BaseActivity {
         public void onMiniAppStarted() {
             super.onMiniAppStarted();
             HiAdsLog.i(TAG, "onMiniAppStarted...");
-            Toast.makeText(PictureTextSelfRenderActivity.this, "跳转小程序", Toast.LENGTH_SHORT)
-                .show();
+            Toast.makeText(PictureTextSelfRenderActivity.this,
+                    getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
         }
 
     }

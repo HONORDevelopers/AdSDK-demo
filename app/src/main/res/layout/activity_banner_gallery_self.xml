@@ -14,7 +14,7 @@
         android:layout_gravity="end"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/app_load_ad" />
+        android:text="@string/app_load_ad"/>
 
     <FrameLayout
         android:id="@+id/ad_content_layout"
@@ -40,13 +40,13 @@
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="10dp" />
+                android:layout_marginEnd="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="加载中" />
+                android:text="@string/loading_item"/>
         </LinearLayout>
 
         <TextView
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:visibility="gone"
-            tools:text="错误信息" />
+            tools:text="@string/error_msg"/>
 
     </FrameLayout>
 </LinearLayout>

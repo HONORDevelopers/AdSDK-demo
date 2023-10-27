@@ -112,8 +112,8 @@ public class PictureTextTemplateRenderActivity extends BaseActivity {
         public void onAdClosed() {
             super.onAdClosed();
             HiAdsLog.i(TAG, "onAdClosed...");
-            Toast.makeText(PictureTextTemplateRenderActivity.this, "广告关闭", Toast.LENGTH_SHORT)
-                .show();
+            Toast.makeText(PictureTextTemplateRenderActivity.this,
+                    getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -123,8 +123,8 @@ public class PictureTextTemplateRenderActivity extends BaseActivity {
         public void onAdClicked() {
             super.onAdClicked();
             HiAdsLog.i(TAG, "onAdClicked...");
-            Toast.makeText(PictureTextTemplateRenderActivity.this, "点击广告", Toast.LENGTH_SHORT)
-                .show();
+            Toast.makeText(PictureTextTemplateRenderActivity.this,
+                    getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -134,8 +134,8 @@ public class PictureTextTemplateRenderActivity extends BaseActivity {
         public void onAdImpression() {
             super.onAdImpression();
             HiAdsLog.i(TAG, "onAdImpression...");
-            Toast.makeText(PictureTextTemplateRenderActivity.this, "展示成功", Toast.LENGTH_SHORT)
-                .show();
+            Toast.makeText(PictureTextTemplateRenderActivity.this,
+                            getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -145,8 +145,8 @@ public class PictureTextTemplateRenderActivity extends BaseActivity {
         public void onMiniAppStarted() {
             super.onMiniAppStarted();
             HiAdsLog.i(TAG, "onMiniAppStarted...");
-            Toast.makeText(PictureTextTemplateRenderActivity.this, "跳转小程序", Toast.LENGTH_SHORT)
-                .show();
+            Toast.makeText(PictureTextTemplateRenderActivity.this,
+                    getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
         }
 
     }

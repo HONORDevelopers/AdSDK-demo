@@ -45,7 +45,8 @@ import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
         downLoadButton = findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_download);
         brandLogoView.setVisibility(isDisplayLogo() ? View.VISIBLE : View.GONE);
 
-        landingTextView.setTag(com.hihonor.adsdk.picturetextad.R.id.ad_common_click_type_tag, GlobalConfig.AD_CLICK_TYPE.JUMP_BUTTON);
+        landingTextView.setTag(com.hihonor.adsdk.picturetextad.R.id.ad_common_click_type_tag,
+                GlobalConfig.AD_CLICK_TYPE.JUMP_BUTTON);
         landingTextView.setOnClickListener(this::triggerClick);
     }
 

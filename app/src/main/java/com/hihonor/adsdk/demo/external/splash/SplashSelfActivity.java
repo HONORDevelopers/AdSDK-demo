@@ -214,7 +214,8 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
         public void onAdImpression() {
             super.onAdImpression();
             HiAdsLog.i(TAG, "onAdImpression...");
-            Toast.makeText(SplashSelfActivity.this, "展示成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashSelfActivity.this,
+                    getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -226,7 +227,8 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
         public void onAdImpressionFailed(String msg) {
             super.onAdImpressionFailed(msg);
             HiAdsLog.i(TAG, "onAdImpressionFailed, msg: " + msg);
-            Toast.makeText(SplashSelfActivity.this, "展示失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashSelfActivity.this,
+                    getString(R.string.ad_impression_failed), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -236,7 +238,8 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
         public void onAdClicked() {
             super.onAdClicked();
             HiAdsLog.i(TAG, "onAdClicked...");
-            Toast.makeText(SplashSelfActivity.this, "点击广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashSelfActivity.this,
+                    getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -246,7 +249,8 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
         public void onAdClosed() {
             super.onAdClosed();
             HiAdsLog.i(TAG, "onAdClosed...");
-            Toast.makeText(SplashSelfActivity.this, "关闭广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashSelfActivity.this,
+                    getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -258,7 +262,8 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
         public void onAdSkip(int type) {
             super.onAdSkip(type);
             HiAdsLog.i(TAG, "onAdSkip, type: " + type);
-            Toast.makeText(SplashSelfActivity.this, "跳过广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashSelfActivity.this,
+                    getString(R.string.ad_skip), Toast.LENGTH_SHORT).show();
             startHomeActivity();
         }
 
@@ -269,7 +274,8 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
         public void onMiniAppStarted() {
             super.onMiniAppStarted();
             HiAdsLog.i(TAG, "onMiniAppStarted...");
-            Toast.makeText(SplashSelfActivity.this, "跳转小程序", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashSelfActivity.this,
+                    getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -286,7 +292,7 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
         @Override
         public void onLoadSuccess(SplashExpressAd splashExpressAd) {
             HiAdsLog.i(TAG, "onLoadSuccess, ad load success");
-            HiAdsLog.i(TAG, "是否有模板视图： " + splashExpressAd.getExpressAdView());
+            HiAdsLog.i(TAG, "is Have Template View： " + splashExpressAd.getExpressAdView());
             View itemView = LayoutInflater.from(SplashSelfActivity.this).inflate(R.layout.layout_splash_self, null);
             initView(itemView);
             splashAdRootView.setAd(splashExpressAd);
@@ -331,7 +337,7 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
 
             //媒体设置
             mIconImageView.setImageResource(R.drawable.ic_launcher_background);
-            adMediaNameView.setText("应用市场");
+            adMediaNameView.setText(getString(R.string.app_market));
             rootView.addView(itemView);
         }
 

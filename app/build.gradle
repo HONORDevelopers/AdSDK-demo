@@ -67,7 +67,6 @@ dependencies {
 
     implementation honor_ads_picture_text
     implementation honor_ads_banner
-    implementation honor_ads_native
     implementation honor_ads_splash
     implementation honor_ads_reward
     implementation honor_ads_interstitial
