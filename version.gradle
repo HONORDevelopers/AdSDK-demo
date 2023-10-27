@@ -24,7 +24,6 @@ ext {
     honor_ad_sdk_version = "1.0.10.314"
 //    honor_ads_lite = "com.hihonor.adsdk.snapshot:ads-lite:$honor_ad_sdk_version"  // 使用这个就不用引用其他的了
     honor_ads_base = "com.hihonor.adsdk.release:ads-base:$honor_ad_sdk_version"
-    honor_ads_native = "com.hihonor.adsdk.release:ads-native:$honor_ad_sdk_version"
     honor_ads_banner = "com.hihonor.adsdk.release:ads-banner:$honor_ad_sdk_version"
     honor_ads_picture_text = "com.hihonor.adsdk.release:ads-picture-text:$honor_ad_sdk_version"
     honor_ads_splash = "com.hihonor.adsdk.release:ads-splash:$honor_ad_sdk_version"

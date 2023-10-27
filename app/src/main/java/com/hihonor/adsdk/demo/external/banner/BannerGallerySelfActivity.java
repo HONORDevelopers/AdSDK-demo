@@ -66,7 +66,7 @@ public class BannerGallerySelfActivity extends BaseActivity {
                 mAdLoadLayout.setVisibility(View.VISIBLE);
                 obtainAd();
             }else {
-                Toast.makeText(this, "初始化失败", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.init_falied), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -117,7 +117,7 @@ public class BannerGallerySelfActivity extends BaseActivity {
         public void onAdImpression() {
             super.onAdImpression();
             HiAdsLog.i(TAG, "onAdImpression...");
-            Toast.makeText(BannerGallerySelfActivity.this, "展示成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BannerGallerySelfActivity.this, getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -127,7 +127,7 @@ public class BannerGallerySelfActivity extends BaseActivity {
         public void onAdClicked() {
             super.onAdClicked();
             HiAdsLog.i(TAG, "onAdClicked...");
-            Toast.makeText(BannerGallerySelfActivity.this, "点击广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BannerGallerySelfActivity.this, getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -137,7 +137,7 @@ public class BannerGallerySelfActivity extends BaseActivity {
         public void onAdClosed() {
             super.onAdClosed();
             HiAdsLog.i(TAG, "onAdClosed...");
-            Toast.makeText(BannerGallerySelfActivity.this, "关闭广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BannerGallerySelfActivity.this, getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -147,7 +147,7 @@ public class BannerGallerySelfActivity extends BaseActivity {
         public void onMiniAppStarted() {
             super.onMiniAppStarted();
             HiAdsLog.i(TAG, "onMiniAppStarted...");
-            Toast.makeText(BannerGallerySelfActivity.this, "跳转小程序", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BannerGallerySelfActivity.this, getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -212,7 +212,7 @@ public class BannerGallerySelfActivity extends BaseActivity {
             mTextErrorInfo.setVisibility(View.VISIBLE);
             mViewPager.setVisibility(View.GONE);
             if (code.equals(String.valueOf(ErrorCode.AD_SLOT_ID_EMPTY))) {
-                ToastUtil.showShortToast("SlotId 为空");
+                ToastUtil.showShortToast(getString(R.string.slotid_null));
             }
         }
     }

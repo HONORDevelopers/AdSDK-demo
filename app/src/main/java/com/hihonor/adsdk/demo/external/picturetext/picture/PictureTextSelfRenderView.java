@@ -79,8 +79,8 @@ public class PictureTextSelfRenderView extends FrameLayout {
         this.mAdapter = adapter;
         if (this.mAdapter != null) {
             this.mAdapter.registerDataObserver(mDataSetObserver);
+            notifyAllChildView();
         }
-        notifyAllChildView();
     }
 
     private void notifyAllChildView() {

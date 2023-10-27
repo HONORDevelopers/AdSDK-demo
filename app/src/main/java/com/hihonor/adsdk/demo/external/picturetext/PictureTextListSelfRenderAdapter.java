@@ -85,7 +85,7 @@ public class PictureTextListSelfRenderAdapter extends RecyclerView.Adapter<Recyc
             }
             logStr = pictureMediaDataBean.getItemName();
         }
-        HiAdsLog.i(LOG_TAG, "onBindViewHolder 三参 %s ", logStr);
+        HiAdsLog.i(LOG_TAG, "onBindViewHolder three %s ", logStr);
     }
 
     @Override
@@ -100,7 +100,7 @@ public class PictureTextListSelfRenderAdapter extends RecyclerView.Adapter<Recyc
         } else if (holder instanceof AdCustomVideoHolder) {
             ((AdCustomVideoHolder)holder).bindData(pictureMediaDataBean);
         }
-        HiAdsLog.i(LOG_TAG, "onBindViewHolder 二参 %s ", pictureMediaDataBean.getItemName());
+        HiAdsLog.i(LOG_TAG, "onBindViewHolder two %s ", pictureMediaDataBean.getItemName());
     }
 
     @Override

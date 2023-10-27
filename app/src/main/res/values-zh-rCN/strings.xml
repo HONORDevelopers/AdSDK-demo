@@ -6,19 +6,50 @@
     <string name="app_name">荣耀广告SDK集成Demo</string>
 
     <!--    首页item-->
-    <string name="app_native_ad">原生广告</string>
-    <string name="app_banner_ad">横幅广告</string>
+    <string name="app_banner_ad">banner广告</string>
     <string name="app_reward_ad">激励广告</string>
+    <string name="app_splash_ad">开屏广告</string>
     <string name="app_interstital_ad">插屏广告</string>
     <string name="app_banner_default">默认模板</string>
     <string name="app_banner_gallery_self">自渲染轮播图</string>
     <string name="app_banner_gallery">轮播图</string>
     <string name="app_picture_text_ad">信息流广告</string>
+    <string name="app_test_tools">测试工具</string>
     <string name="app_picture_text_template_render_ad">模板渲染</string>
     <string name="app_picture_text_self_render_ad">自渲染</string>
-    <string name="app_picture_text_install_ad">下载安装类广告</string>
     <string name="app_load_ad">加载广告</string>
     <string name="app_ad_close_tip">广告关闭</string>
     <string name="app_download">下载</string>
     <string name="app_replay">重播</string>
+
+    <!-- 非首页item-->
+    <string name="ad_item">广告</string>
+    <string name="loading_item">加载中。。。</string>
+    <string name="error_msg">错误信息</string>
+    <string name="load_default_Splash">加载开屏模板广告</string>
+    <string name="load_self_Splash">加载开屏自渲染广告</string>
+    <string name="load_pre_cache">预缓存请求</string>
+    <string name="load_reward">加载激励视频广告</string>
+    <string name="load_interstital">加载插屏广告</string>
+    <string name="media_data">媒体数据</string>
+    <string name="init_falied">初始化失败</string>
+    <string name="ad_impression_success">展示成功</string>
+    <string name="ad_impression_failed">展示失败</string>
+    <string name="ad_clicked">点击广告</string>
+    <string name="miniapp_start">跳转小程序</string>
+    <string name="ad_skip">广告跳过</string>
+    <string name="slotid_null">Slotid为空</string>
+    <string name="click">点击了item</string>
+    <string name="application_name">应用名称：</string>
+    <string name="application_version">\t\n应用版本号：</string>
+    <string name="app_package">\t\n应用包名：</string>
+    <string name="developer_name">\t\n开发者公司名称：</string>
+    <string name="permissions_url">\t\n隐私协议超链：</string>
+    <string name="privacy_agreement_url">\t\n权限列表超链：</string>
+    <string name="home_page">\t\n主页超链：</string>
+    <string name="wrong_msg">出错啦：</string>
+    <string name="get_reward">获得奖励：</string>
+    <string name="reward_item">Q点券</string>
+    <string name="app_market">应用市场</string>
+    <string name="splash_request_failed">开屏广告获取广告失败</string>
 </resources>

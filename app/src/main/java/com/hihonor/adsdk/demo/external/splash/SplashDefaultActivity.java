@@ -99,7 +99,8 @@ public class SplashDefaultActivity extends Activity {
         public void onAdImpression() {
             super.onAdImpression();
             HiAdsLog.i(TAG, "onAdImpression...");
-            Toast.makeText(SplashDefaultActivity.this, "展示成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashDefaultActivity.this,
+                    getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -111,7 +112,8 @@ public class SplashDefaultActivity extends Activity {
         public void onAdImpressionFailed(String msg) {
             super.onAdImpressionFailed(msg);
             HiAdsLog.i(TAG, "onAdImpressionFailed, msg: " + msg);
-            Toast.makeText(SplashDefaultActivity.this, "展示失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashDefaultActivity.this,
+                    getString(R.string.ad_impression_failed), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -121,7 +123,8 @@ public class SplashDefaultActivity extends Activity {
         public void onAdClicked() {
             super.onAdClicked();
             HiAdsLog.i(TAG, "onAdClicked...");
-            Toast.makeText(SplashDefaultActivity.this, "点击广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashDefaultActivity.this,
+                    getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -131,7 +134,8 @@ public class SplashDefaultActivity extends Activity {
         public void onAdClosed() {
             super.onAdClosed();
             HiAdsLog.i(TAG, "onAdClosed...");
-            Toast.makeText(SplashDefaultActivity.this, "关闭广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashDefaultActivity.this,
+                    getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -143,7 +147,8 @@ public class SplashDefaultActivity extends Activity {
         public void onAdSkip(int type) {
             super.onAdSkip(type);
             HiAdsLog.i(TAG, "onAdSkip, type: " + type);
-            Toast.makeText(SplashDefaultActivity.this, "跳过广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashDefaultActivity.this,
+                    getString(R.string.ad_skip), Toast.LENGTH_SHORT).show();
             startHomeActivity();
         }
 
@@ -154,7 +159,8 @@ public class SplashDefaultActivity extends Activity {
         public void onMiniAppStarted() {
             super.onMiniAppStarted();
             HiAdsLog.i(TAG, "onMiniAppStarted...");
-            Toast.makeText(SplashDefaultActivity.this, "跳转小程序", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SplashDefaultActivity.this,
+                    getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -184,7 +190,7 @@ public class SplashDefaultActivity extends Activity {
             HiAdsLog.i(TAG, "onLoadSuccess, ad load success");
             mSplashExpressAd = splashExpressAd;
             splashExpressAd.setLogoResId(R.drawable.ic_launcher_background);
-            splashExpressAd.setMediaNameString("应用市场");
+            splashExpressAd.setMediaNameString(getString(R.string.app_market));
             splashExpressAd.setAdListener(new MyAdListener());
             mRootView.addView(splashExpressAd.getExpressAdView());
         }
@@ -197,7 +203,7 @@ public class SplashDefaultActivity extends Activity {
          */
         @Override
         public void onFailed(String code, String errorMsg) {
-            ToastUtil.showShortToast("开屏广告获取广告失败");
+            ToastUtil.showShortToast(getString(R.string.splash_request_failed));
             HiAdsLog.i(TAG, "onFailed: code: " + code + ", errorMsg: " + errorMsg);
             Intent intent = new Intent(SplashDefaultActivity.this, MainActivity.class);
             startActivity(intent);

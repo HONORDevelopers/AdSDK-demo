@@ -47,7 +47,7 @@ public class BannerDefaultActivity extends BaseActivity {
             if(HnAds.get().isSdkConfigSuccess()){
                 obtainAd();
             }else {
-                Toast.makeText(BannerDefaultActivity.this, "初始化失败", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BannerDefaultActivity.this, getString(R.string.init_falied), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -78,7 +78,7 @@ public class BannerDefaultActivity extends BaseActivity {
         public void onAdImpression() {
             super.onAdImpression();
             HiAdsLog.i(TAG, "onAdImpression...");
-            Toast.makeText(BannerDefaultActivity.this, "展示成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BannerDefaultActivity.this, getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -88,7 +88,7 @@ public class BannerDefaultActivity extends BaseActivity {
         public void onAdClicked() {
             super.onAdClicked();
             HiAdsLog.i(TAG, "onAdClicked...");
-            Toast.makeText(BannerDefaultActivity.this, "点击广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BannerDefaultActivity.this, getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -98,7 +98,7 @@ public class BannerDefaultActivity extends BaseActivity {
         public void onAdClosed() {
             super.onAdClosed();
             HiAdsLog.i(TAG, "onAdClosed...");
-            Toast.makeText(BannerDefaultActivity.this, "关闭广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BannerDefaultActivity.this, getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -108,7 +108,7 @@ public class BannerDefaultActivity extends BaseActivity {
         public void onMiniAppStarted() {
             super.onMiniAppStarted();
             HiAdsLog.i(TAG, "onMiniAppStarted...");
-            Toast.makeText(BannerDefaultActivity.this, "跳转小程序", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BannerDefaultActivity.this, getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -23,7 +23,7 @@ public class RewardActivity extends BaseActivity {
     private TextView mTvMsg;
     private Button mBtnRewardContent;
     private String mSlotId = "1698589518466908160";
-    private String mRewardName = "Q点卷";
+    private String mRewardName = "Q点券";
     private double mRewardAmount = 1000;
 
     @Override
@@ -72,7 +72,8 @@ public class RewardActivity extends BaseActivity {
         public void onAdImpression() {
             super.onAdImpression();
             HiAdsLog.i(TAG, "onAdImpression...");
-            Toast.makeText(RewardActivity.this, "展示成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RewardActivity.this,
+                    getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -84,7 +85,8 @@ public class RewardActivity extends BaseActivity {
         public void onAdImpressionFailed(String msg) {
             super.onAdImpressionFailed(msg);
             HiAdsLog.i(TAG, "onAdImpressionFailed, msg: " + msg);
-            Toast.makeText(RewardActivity.this, "展示失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RewardActivity.this,
+                    getString(R.string.ad_impression_failed), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -94,7 +96,8 @@ public class RewardActivity extends BaseActivity {
         public void onAdClicked() {
             super.onAdClicked();
             HiAdsLog.i(TAG, "onAdClicked...");
-            Toast.makeText(RewardActivity.this, "点击广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RewardActivity.this,
+                    getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -104,7 +107,8 @@ public class RewardActivity extends BaseActivity {
         public void onAdClosed() {
             super.onAdClosed();
             HiAdsLog.i(TAG, "onAdClosed...");
-            Toast.makeText(RewardActivity.this, "关闭广告", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RewardActivity.this,
+                    getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
         }
 
         /**
@@ -114,7 +118,8 @@ public class RewardActivity extends BaseActivity {
         public void onMiniAppStarted() {
             super.onMiniAppStarted();
             HiAdsLog.i(TAG, "onMiniAppStarted...");
-            Toast.makeText(RewardActivity.this, "跳转小程序", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RewardActivity.this,
+                    getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -151,7 +156,8 @@ public class RewardActivity extends BaseActivity {
                 @Override
                 public void onRewarded(RewardItem rewardItem) {
                     HiAdsLog.i(TAG,"onRewarded");
-                    mBtnRewardContent.setText("获得奖励: " + rewardItem.getAmount() + " " + rewardItem.getType());
+                    mBtnRewardContent.setText(getString(R.string.get_reward)
+                            + rewardItem.getAmount() + " " + rewardItem.getType());
                     mBtnRewardContent.setVisibility(View.VISIBLE);
                 }
             });
@@ -166,7 +172,7 @@ public class RewardActivity extends BaseActivity {
         @Override
         public void onFailed(String code, String errorMsg) {
             HiAdsLog.i(TAG, "onFailed: code: " + code + ", errorMsg: " + errorMsg);
-            mTvMsg.setText("出错啦: " + code + " " + errorMsg);
+            mTvMsg.setText(getString(R.string.wrong_msg) + code + " " + errorMsg);
             mTvMsg.setVisibility(View.VISIBLE);
         }
     }

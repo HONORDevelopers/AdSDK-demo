@@ -6,14 +6,15 @@
     <string name="app_name">Honor Ad Platform</string>
 
     <!--    首页item-->
-    <string name="app_native_ad">Native Ads</string>
     <string name="app_reward_ad">Reward Ads</string>
     <string name="app_banner_ad">Banner Ads</string>
+    <string name="app_splash_ad">Splash Ads</string>
     <string name="app_interstital_ad">Interstital Ads</string>
-    <string name="app_banner_default">默认模板</string>
-    <string name="app_banner_gallery_self">自渲染轮播图</string>
-    <string name="app_banner_gallery">轮播图</string>
+    <string name="app_banner_default">Banner Default</string>
+    <string name="app_banner_gallery_self">Banner Gallery Self</string>
+    <string name="app_banner_gallery">Banner Gallery</string>
     <string name="app_picture_text_ad">Feed Ads</string>
+    <string name="app_test_tools">Tools</string>
     <string name="app_picture_text_template_render_ad">Feed Template Render Ads</string>
     <string name="app_picture_text_self_render_ad">Feed Self Render Ads</string>
     <string name="app_picture_text_install_ad">Install Ads</string>
@@ -24,4 +25,34 @@
 
     <string name="ads_app_magic_text_font_family_medium" translatable="false">HnChinese-medium</string>
     <string name="ads_app_magic_text_font_family_regular" translatable="false">sans-serif</string>
+    <!-- 非首页item-->
+    <string name="ad_item">Ads</string>
+    <string name="loading_item">Loading...</string>
+    <string name="error_msg">Error Msg</string>
+    <string name="load_default_Splash">Load Default Splash</string>
+    <string name="load_self_Splash">Load Self Splash</string>
+    <string name="load_pre_cache">Load Pre Cache</string>
+    <string name="load_reward">Load Reward</string>
+    <string name="load_interstital">Load Interstital</string>
+    <string name="media_data">Media Data</string>
+    <string name="init_falied">Init Failed</string>
+    <string name="ad_impression_success">Impression Success</string>
+    <string name="ad_impression_failed">Impression Failed</string>
+    <string name="ad_clicked">Ad Clicked</string>
+    <string name="miniapp_start">MiniApp Started</string>
+    <string name="ad_skip">Ad Skip</string>
+    <string name="slotid_null">Slotid is Null</string>
+    <string name="click">On Click Item</string>
+    <string name="application_name">APP Name</string>
+    <string name="application_version">\t\nApp Version</string>
+    <string name="app_package">\t\nApp Package</string>
+    <string name="developer_name">\t\nDeveloper Name</string>
+    <string name="permissions_url">\t\nPermissions Url</string>
+    <string name="privacy_agreement_url">\t\nPrivacy Agreement Url</string>
+    <string name="home_page">\t\nHome Page</string>
+    <string name="wrong_msg">Is Wrong</string>
+    <string name="get_reward">Get Reward</string>
+    <string name="reward_item">Q Order roll</string>
+    <string name="app_market">APP Market</string>
+    <string name="splash_request_failed">Splash Request Failed</string>
 </resources>

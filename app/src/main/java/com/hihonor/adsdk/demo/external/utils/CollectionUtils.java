@@ -69,7 +69,7 @@ public class CollectionUtils {
                 total = Array.getLength(object);
             } catch (IllegalArgumentException ex) {
                 HiAdsLog.i(TAG,
-                    "size, 对象类型不支持获取大小, IllegalArgumentException: " + ex.getMessage());
+                    "size, Object type does not support getting size, IllegalArgumentException: " + ex.getMessage());
             }
         }
         return total;

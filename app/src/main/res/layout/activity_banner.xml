@@ -13,7 +13,7 @@
         android:layout_gravity="end"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="默认模板" />
+        android:text="@string/app_banner_default" />
 
     <Button
         android:id="@+id/bt_gallery_self"
@@ -22,7 +22,7 @@
         android:layout_gravity="end"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="自渲染轮播" />
+        android:text="@string/app_banner_gallery_self" />
 
 
     <Button
@@ -32,6 +32,6 @@
         android:layout_gravity="end"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="轮播图" />
+        android:text="@string/app_banner_gallery" />
 
 </LinearLayout>

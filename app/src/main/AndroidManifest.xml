@@ -79,21 +79,6 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.Adsdk"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity android:name=".InstallMangerActivity"
-            android:exported="false"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Adsdk"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity android:name=".NativeADActivity"
-            android:exported="false"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Adsdk"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity android:name=".SearchNativeADActivity"
-            android:exported="false"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Adsdk"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <activity
             android:name=".splash.SplashActivity"

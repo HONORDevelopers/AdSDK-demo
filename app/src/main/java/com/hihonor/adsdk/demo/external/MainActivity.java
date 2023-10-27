@@ -33,18 +33,6 @@ public class MainActivity extends BaseActivity {
             intent.setClass(MainActivity.this,PictureTextActivity.class);
             startActivity(intent);
         });
-        findViewById(R.id.bt_native).setOnClickListener(view -> {
-            intent.setClass(MainActivity.this,NativeADActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.bt_pic_text_install).setOnClickListener(view -> {
-            intent.setClass(MainActivity.this,InstallMangerActivity.class);
-            startActivity(intent);
-        });
-        findViewById(R.id.bt_search_native_ad).setOnClickListener(view -> {
-            intent.setClass(MainActivity.this, SearchNativeADActivity.class);
-            startActivity(intent);
-        });
         findViewById(R.id.bt_reward).setOnClickListener(view -> {
             intent.setClass(MainActivity.this, RewardActivity.class);
             startActivity(intent);

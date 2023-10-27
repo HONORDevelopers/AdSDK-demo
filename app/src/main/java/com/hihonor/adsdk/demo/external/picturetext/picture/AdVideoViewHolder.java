@@ -187,12 +187,14 @@ public class AdVideoViewHolder extends RecyclerView.ViewHolder {
 
     private void initVideoPlayerView() {
         mAdPlayerContainer.removeAllViews();
-        ViewParent parent = adPlayerView.getParent();
-        if (parent != null) {
-            ((ViewGroup)parent).removeView(adPlayerView);
-        }
         if (adPlayerView != null) {
-            mAdPlayerContainer.addView(adPlayerView, 0);
+            ViewParent parent = adPlayerView.getParent();
+            if (parent != null) {
+                ((ViewGroup)parent).removeView(adPlayerView);
+            }
+            if (adPlayerView != null) {
+                mAdPlayerContainer.addView(adPlayerView, 0);
+            }
         }
         if (mAdVideo != null) {
             mAdVideo.setVideoListener(onVideoPlayListener);
