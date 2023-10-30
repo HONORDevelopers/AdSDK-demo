@@ -41,9 +41,7 @@ public class PictureTextTemplateRenderActivity extends BaseActivity {
     private void initView() {
         mPictureTextRecyclerView = findViewById(R.id.picture_text_recycler_view);
         Button adLoadButton = findViewById(R.id.bt_load_ad);
-        adLoadButton.setOnClickListener((v) ->{
-            obtainAd();
-        });
+        adLoadButton.setOnClickListener((v) -> obtainAd());
     }
 
     /**

@@ -57,13 +57,7 @@ public class BannerGalleryActivity extends BaseActivity {
     private void initView() {
         Button adLoadButton = findViewById(R.id.bt_load_ad);
         mViewPager = findViewById(R.id.view_pager);
-        adLoadButton.setOnClickListener(view -> {
-            if(HnAds.get().isSdkConfigSuccess()){
-                obtainAd();
-            }else {
-                Toast.makeText(BannerGalleryActivity.this, getString(R.string.init_falied), Toast.LENGTH_SHORT).show();
-            }
-        });
+        adLoadButton.setOnClickListener(view -> obtainAd());
         mViewPager.setPageMargin(50);
         mViewPager.setAdapter(mBannerPageAdapter);
     }

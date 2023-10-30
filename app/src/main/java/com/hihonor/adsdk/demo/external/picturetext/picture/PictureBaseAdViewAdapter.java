@@ -5,6 +5,7 @@ import android.view.View;
 
 import androidx.annotation.IdRes;
 
+import com.hihonor.adsdk.base.log.HiAdsLog;
 import com.hihonor.adsdk.base.widget.base.AdFlagCloseView;
 
 /**
@@ -66,16 +67,6 @@ public abstract class PictureBaseAdViewAdapter<VH extends PictureBaseAdViewAdapt
         }
         public View getRootView() {
             return mRootView;
-        }
-
-        public void setClickListener(View.OnClickListener clickListener) {
-            mClickListener = clickListener;
-        }
-
-        protected void triggerClick(View target) {
-            if (mClickListener != null) {
-                mClickListener.onClick(target);
-            }
         }
 
         public void startDownload() {

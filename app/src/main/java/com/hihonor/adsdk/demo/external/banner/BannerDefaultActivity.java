@@ -43,13 +43,7 @@ public class BannerDefaultActivity extends BaseActivity {
     public void initView() {
         mAdContent = findViewById(R.id.ad_content);
         Button adLoadButton = findViewById(R.id.bt_load_ad);
-        adLoadButton.setOnClickListener(view -> {
-            if(HnAds.get().isSdkConfigSuccess()){
-                obtainAd();
-            }else {
-                Toast.makeText(BannerDefaultActivity.this, getString(R.string.init_falied), Toast.LENGTH_SHORT).show();
-            }
-        });
+        adLoadButton.setOnClickListener(view -> obtainAd());
     }
 
     /**
