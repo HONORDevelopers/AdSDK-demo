@@ -62,12 +62,8 @@ public class BannerGallerySelfActivity extends BaseActivity {
         mAdLoadLayout = findViewById(R.id.ad_load_layout);
         mTextErrorInfo = findViewById(R.id.text_error_info);
         findViewById(R.id.bt_load_ad).setOnClickListener(v -> {
-            if(HnAds.get().isSdkConfigSuccess()){
-                mAdLoadLayout.setVisibility(View.VISIBLE);
-                obtainAd();
-            }else {
-                Toast.makeText(this, getString(R.string.init_falied), Toast.LENGTH_SHORT).show();
-            }
+            mAdLoadLayout.setVisibility(View.VISIBLE);
+            obtainAd();
         });
     }
 

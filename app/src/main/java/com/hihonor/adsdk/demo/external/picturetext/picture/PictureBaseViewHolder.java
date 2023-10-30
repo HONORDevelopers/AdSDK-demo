@@ -44,10 +44,6 @@ import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
         adFlagCloseView = findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_close_view);
         downLoadButton = findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_download);
         brandLogoView.setVisibility(isDisplayLogo() ? View.VISIBLE : View.GONE);
-
-        landingTextView.setTag(com.hihonor.adsdk.picturetextad.R.id.ad_common_click_type_tag,
-                GlobalConfig.AD_CLICK_TYPE.JUMP_BUTTON);
-        landingTextView.setOnClickListener(this::triggerClick);
     }
 
     protected void renderTextView(@NonNull PictureTextExpressAd baseAd) {

@@ -5,9 +5,15 @@ import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
+
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.hihonor.adsdk.base.log.HiAdsLog;
 import com.hihonor.adsdk.demo.external.R;
 
@@ -26,7 +32,7 @@ public class GlideUtils {
             return;
         }
         if (cornerRadius <= 0) {
-            Glide.with(context).load(imgUrl).into(adImageView);
+            Glide.with(context).load(imgUrl).addListener(new GlideLoadRequestListener(imgUrl)).into(adImageView);
             return;
         }
         GradientDrawable defaultDrawable = new GradientDrawable();
@@ -34,7 +40,36 @@ public class GlideUtils {
         defaultDrawable.setCornerRadius(cornerRadius);
         RequestOptions options = new RequestOptions()
                 .transform(new RoundedCorners((int) cornerRadius));
-        Glide.with(context).load(imgUrl).error(defaultDrawable).apply(options).into(adImageView);
+        Glide.with(context).load(imgUrl).error(defaultDrawable).addListener(new GlideLoadRequestListener(imgUrl)).apply(options).into(adImageView);
+    }
+
+    private static class GlideLoadRequestListener implements RequestListener{
+
+        private final String mImgUrl;
+
+        public GlideLoadRequestListener(String imgUrl) {
+            mImgUrl = imgUrl;
+        }
+
+        @Override
+        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target target, boolean isFirstResource) {
+            StringBuilder msg = new StringBuilder();
+            msg.append("onLoadFailed, ");
+            msg.append("failed url is : ");
+            msg.append(mImgUrl);
+            msg.append(", msg: ");
+            if (null != e) {
+                msg.append(e.getMessage());
+            }
+            HiAdsLog.e(TAG, "loadImage, "+ msg);
+            return false;
+        }
+
+        @Override
+        public boolean onResourceReady(Object resource, Object model, Target target, DataSource dataSource, boolean isFirstResource) {
+            HiAdsLog.i(TAG, "onResourceReady...");
+            return false;
+        }
     }
 
     /**

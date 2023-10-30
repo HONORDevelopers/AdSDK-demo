@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hihonor.adsdk.base.api.feed.PictureTextExpressAd;
+import com.hihonor.adsdk.base.log.HiAdsLog;
 import com.hihonor.adsdk.base.widget.download.DownLoadButton;
 import com.hihonor.adsdk.demo.external.R;
 import com.hihonor.adsdk.demo.external.utils.GlobalConfig;
@@ -19,14 +20,11 @@ class SmallPictureDownloadViewHolder extends PictureDownloadViewHolder {
     private static final int DP_VALUE = 4;
     private final ImageView adImageView;
 
-    private final DownLoadButton adDownloadView;
-
     private final TextView adTitle, adContent;
 
     public SmallPictureDownloadViewHolder(View mRootView) {
         super(mRootView);
         adImageView = mRootView.findViewById(R.id.ad_image);
-        adDownloadView = mRootView.findViewById(R.id.ad_download);
         adTitle = mRootView.findViewById(R.id.ad_title);
         adContent = mRootView.findViewById(R.id.ad_content);
         adFlagView = mRootView.findViewById(R.id.ad_flag_view);
@@ -61,12 +59,6 @@ class SmallPictureDownloadViewHolder extends PictureDownloadViewHolder {
         adFlagCloseView.setViewPadding(0, 0, 0, 0);
         Drawable closeIconDrawable = context.getDrawable(R.drawable.honor_ads_icsvg_public_cancel_regular);
         adFlagCloseView.setCloseIconDrawable(closeIconDrawable);
-
-
-        adDownloadView.setTag(R.id.ad_common_click_type_tag, GlobalConfig.AD_CLICK_TYPE.JUMP_BUTTON);
-        if (baseAd.getPromotionPurpose() != GlobalConfig.POPULARIZE_TYPE.APP_POPULARIZE_DOWNLOAD) {
-            adDownloadView.setOnClickListener(this::triggerClick);
-        }
     }
 
     private void setPictureImage(PictureTextExpressAd baseAd) {
