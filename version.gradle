@@ -20,30 +20,12 @@ ext {
     androidx_material = 'com.google.android.material:material:1.4.0'
     androidx_legacy_support = 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    // release 包
+    // 广告SDK包
     honor_ad_sdk_version = "1.0.10.314"
-//    honor_ads_lite = "com.hihonor.adsdk.snapshot:ads-lite:$honor_ad_sdk_version"  // 使用这个就不用引用其他的了
-    honor_ads_base = "com.hihonor.adsdk.release:ads-base:$honor_ad_sdk_version"
-    honor_ads_banner = "com.hihonor.adsdk.release:ads-banner:$honor_ad_sdk_version"
-    honor_ads_picture_text = "com.hihonor.adsdk.release:ads-picture-text:$honor_ad_sdk_version"
-    honor_ads_splash = "com.hihonor.adsdk.release:ads-splash:$honor_ad_sdk_version"
-    honor_ads_reward = "com.hihonor.adsdk.release:ads-reward:$honor_ad_sdk_version"
-    honor_ads_interstitial = "com.hihonor.adsdk.release:ads-interstitial:$honor_ad_sdk_version"
-    honor_ads_tt = "com.hihonor.adsdk.release:adapter-tt:$honor_ad_sdk_version"
-    honor_ads_tt_util = "com.hihonor.adsdk.release:adapter-util:$honor_ad_sdk_version"
+    honor_ads_lite = "com.hihonor.mcs:ads-lite:$honor_ad_sdk_version"  // 使用这个就不用引用其他的了
+    honor_ads_tools = "com.hihonor.mcs:ads-tools:$honor_ad_sdk_version" // 如果您需要使用自测工具，可以引用该包
 
     //三方依赖库版本
-    lottie = 'com.airbnb.android:lottie:6.0.1'
     glide = 'com.github.bumptech.glide:glide:4.13.2'
     glide_compiler = 'com.github.bumptech.glide:compiler:4.13.2'
-    okHttp = 'com.squareup.okhttp3:okhttp:4.9.1'
-    gson = 'com.google.code.gson:gson:2.10.1'
-    retrofit2 = 'com.squareup.retrofit2:retrofit:2.9.0'
-    retrofit2_converter_gson = 'com.squareup.retrofit2:converter-gson:2.9.0'
-    lifecycle_livedata = 'androidx.lifecycle:lifecycle-livedata:2.2.0'
-    //room
-    room_version = "2.3.0"
-    room_compiler = "androidx.room:room-compiler:$room_version"
-    room_runtime = "androidx.room:room-runtime:$room_version"
-
 }

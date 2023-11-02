@@ -8,7 +8,7 @@ import com.hihonor.adsdk.base.init.HnAdConfig;
 import com.hihonor.adsdk.base.init.HnCustomController;
 
 public class DemoApplication extends Application {
-    private static final String TAG = "MyApplication";
+    private static final String TAG = "DemoApplication";
     // 国内个性化推荐开关，国内SDK由外部实媒体现传入必传参数
     private static boolean isLimit = true; // 个性化广告
 
