@@ -58,26 +58,14 @@ repositories {
     }
 }
 dependencies {
-    implementation lottie
     implementation androidx_appcompat
     implementation androidx_material
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui:2.3.5'
 
-    implementation honor_ads_picture_text
-    implementation honor_ads_banner
-    implementation honor_ads_splash
-    implementation honor_ads_reward
-    implementation honor_ads_interstitial
-    implementation honor_ads_tt_util
-    implementation honor_ads_tt
-
+    implementation honor_ads_lite
+    implementation honor_ads_tools
 
     implementation files('../aars/open_ad_sdk_5.6.0.2.aar')
-    implementation files('../aars/ads-tools-1.0.10.311.aar')
-
-    //此条注释误删
-//    implementation hw_detect_sdk
-
 }

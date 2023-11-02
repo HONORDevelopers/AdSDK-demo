@@ -5,30 +5,23 @@
 apply from: 'version.gradle'
 buildscript {
     repositories {
-        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-public' }
-        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-remote' }
-        flatDir {
-            dirs 'libs'
-        }
-        jcenter{
-            url rootProject.file('repo')
+        google()
+        jcenter()
+        maven {
+            url 'https://developer.hihonor.com/repo'
         }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.3"
-        classpath 'com.github.kezong:fat-aar:1.3.6'
     }
 }
 
 allprojects {
     repositories {
-        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-public' }
-        maven { url 'http://cloudartifact.ipd.hihonor.com/artifactory/maven-remote' }
-        flatDir {
-            dirs 'libs'
-        }
-        jcenter{
-            url rootProject.file('repo')
+        google()
+        jcenter()
+        maven {
+            url 'https://developer.hihonor.com/repo'
         }
     }
 }
