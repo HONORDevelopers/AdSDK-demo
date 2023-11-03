@@ -30,6 +30,8 @@ public class PictureTextTemplateRenderActivity extends BaseActivity {
     private PictureTextListAdapter mAdapter;
     private RecyclerView mPictureTextRecyclerView;
 
+    private List<PictureTextExpressAd> mAdViewList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +81,7 @@ public class PictureTextTemplateRenderActivity extends BaseActivity {
          */
         @Override
         public void onAdLoaded(List<PictureTextExpressAd> adViewList) {
+            mAdViewList = adViewList;
             HiAdsLog.i(TAG, "onAdLoaded, ad load success");
             if (adViewList == null || adViewList.isEmpty()) {
                 Toast.makeText(PictureTextTemplateRenderActivity.this, "Request success but data is empty",
@@ -147,6 +150,18 @@ public class PictureTextTemplateRenderActivity extends BaseActivity {
                     getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mAdViewList != null && !mAdViewList.isEmpty()) {
+            for (PictureTextExpressAd expressAd : mAdViewList) {
+                if (expressAd != null) {
+                    expressAd.release();
+                }
+            }
+        }
     }
 
 }

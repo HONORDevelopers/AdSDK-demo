@@ -164,9 +164,13 @@ public class SplashDefaultActivity extends Activity {
         }
     }
 
+    /**
+     * 页面不可见需要移除广告view
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // 加载广告的view
         if (mRootView != null) {
             mRootView.removeAllViews();
         }
