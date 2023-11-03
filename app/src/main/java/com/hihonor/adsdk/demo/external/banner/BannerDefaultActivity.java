@@ -13,7 +13,6 @@ import com.hihonor.ads.banner.api.BannerAdLoad;
 import com.hihonor.ads.banner.api.BannerAdLoadListener;
 import com.hihonor.ads.banner.api.BannerExpressAd;
 import com.hihonor.adsdk.base.AdSlot;
-import com.hihonor.adsdk.base.HnAds;
 import com.hihonor.adsdk.base.bean.DislikeInfo;
 import com.hihonor.adsdk.base.callback.AdListener;
 import com.hihonor.adsdk.base.callback.DislikeItemClickListener;
@@ -28,7 +27,9 @@ public class BannerDefaultActivity extends BaseActivity {
 
     private static final String TAG = "BannerDefaultActivity";
 
-    private FrameLayout mAdContent;
+    private FrameLayout mRootView;
+
+    private BannerExpressAd mBannerExpressAd;
 
     private String mSlotId = "1698586284462047232";
 
@@ -41,7 +42,7 @@ public class BannerDefaultActivity extends BaseActivity {
     }
 
     public void initView() {
-        mAdContent = findViewById(R.id.ad_content);
+        mRootView = findViewById(R.id.ad_content);
         Button adLoadButton = findViewById(R.id.bt_load_ad);
         adLoadButton.setOnClickListener(view -> obtainAd());
     }
@@ -118,12 +119,13 @@ public class BannerDefaultActivity extends BaseActivity {
          */
         @Override
         public void onLoadSuccess(BannerExpressAd bannerExpressAd) {
+            mBannerExpressAd = bannerExpressAd;
             HiAdsLog.i(TAG, "onLoadSuccess, ad load success");
             // 您可根据需求实现接口并按需重写您需要接收通知的方法。
             bannerExpressAd.setAdListener(new MyAdListener());
-            mAdContent.removeAllViews();
+            mRootView.removeAllViews();
             // 添加view
-            mAdContent.addView(bannerExpressAd.getExpressAdView());
+            mRootView.addView(bannerExpressAd.getExpressAdView());
             // 设置点击监听
             bannerExpressAd.setDislikeClickListener(new MyDislikeClickListener());
         }
@@ -144,9 +146,23 @@ public class BannerDefaultActivity extends BaseActivity {
     class MyDislikeClickListener implements DislikeItemClickListener {
         @Override
         public void onItemClick(int position, @Nullable DislikeInfo dislikeInfo, @Nullable View target) {
-            mAdContent.removeAllViews();
+            mRootView.removeAllViews();
             Toast.makeText(BannerDefaultActivity.this, getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
         }
     }
 
+    /**
+     * 页面不可见需要移除广告view
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 加载广告的view
+        if (mRootView != null) {
+            mRootView.removeAllViews();
+        }
+        if (mBannerExpressAd != null) {
+            mBannerExpressAd.release();
+        }
+    }
 }

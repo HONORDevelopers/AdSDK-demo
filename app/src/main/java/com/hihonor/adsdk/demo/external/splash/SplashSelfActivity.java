@@ -41,7 +41,10 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
      */
     private boolean mForceGoMain;
 
-    private FrameLayout rootView;
+    private FrameLayout mRootView;
+
+    private SplashExpressAd mSplashExpressAd;
+
     private SplashAdRootView splashAdRootView;
 
     private FrameLayout mSplashLayout;
@@ -71,7 +74,7 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
     }
 
     public void init() {
-        rootView = findViewById(R.id.root_view);
+        mRootView = findViewById(R.id.root_view);
         obtainAd();
     }
 
@@ -187,11 +190,21 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
         mForceGoMain = true;
     }
 
+    /**
+     * 页面不可见需要移除广告view
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (shakeManager != null) {
             shakeManager.unregister();
+        }
+        // 加载广告的view
+        if (mRootView != null) {
+            mRootView.removeAllViews();
+        }
+        if (mSplashExpressAd != null) {
+            mSplashExpressAd.release();
         }
     }
 
@@ -291,6 +304,7 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
          */
         @Override
         public void onLoadSuccess(SplashExpressAd splashExpressAd) {
+            mSplashExpressAd = splashExpressAd;
             HiAdsLog.i(TAG, "onLoadSuccess, ad load success");
             HiAdsLog.i(TAG, "is Have Template View： " + splashExpressAd.getExpressAdView());
             View itemView = LayoutInflater.from(SplashSelfActivity.this).inflate(R.layout.layout_splash_self, null);
@@ -338,7 +352,7 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
             //媒体设置
             mIconImageView.setImageResource(R.drawable.ic_launcher_background);
             adMediaNameView.setText(getString(R.string.app_market));
-            rootView.addView(itemView);
+            mRootView.addView(itemView);
         }
 
         /**

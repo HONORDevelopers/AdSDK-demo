@@ -26,6 +26,8 @@ public class RewardActivity extends BaseActivity {
     private String mRewardName = "Q点券";
     private double mRewardAmount = 1000;
 
+    private RewardExpressAd mRewardExpressAd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,6 +137,7 @@ public class RewardActivity extends BaseActivity {
          */
         @Override
         public void onLoadSuccess(RewardExpressAd rewardExpressAd) {
+            mRewardExpressAd = rewardExpressAd;
             HiAdsLog.i(TAG, "onLoadSuccess, ad load success");
             rewardExpressAd.setAdListener(new MyAdListener());
             rewardExpressAd.show(RewardActivity.this, new RewardExpressAd.RewardAdStatusListener() {
@@ -177,4 +180,14 @@ public class RewardActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 页面不可见需要移除广告view
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mRewardExpressAd != null) {
+            mRewardExpressAd.release();
+        }
+    }
 }
