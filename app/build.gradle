@@ -66,6 +66,4 @@ dependencies {
 
     implementation honor_ads_lite
     implementation honor_ads_tools
-
-    implementation files('../aars/open_ad_sdk_5.6.0.2.aar')
 }
