@@ -9,7 +9,7 @@ ext {
     minSdk_version = 23
     targetSdk_version = 30
 
-    //code和name必须保持一致。首数字0去除
+    // code和name必须保持一致。首数字0去除
     version_code = VERSION_CODE.toInteger()
     version_name = "${VERSION_NAME}"
     app_version_code = VERSION_CODE.toInteger()
@@ -25,7 +25,7 @@ ext {
     honor_ads_lite = "com.hihonor.mcs:ads-lite:$honor_ad_sdk_version"  // 使用这个就不用引用其他的了
     honor_ads_tools = "com.hihonor.mcs:ads-tools:$honor_ad_sdk_version" // 如果您需要使用自测工具，可以引用该包
 
-    //三方依赖库版本
+    // 三方依赖库版本
     glide = 'com.github.bumptech.glide:glide:4.13.2'
     glide_compiler = 'com.github.bumptech.glide:compiler:4.13.2'
 }
