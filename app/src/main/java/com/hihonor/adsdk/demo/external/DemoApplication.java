@@ -8,13 +8,21 @@ import com.hihonor.adsdk.base.init.HnAdConfig;
 import com.hihonor.adsdk.base.init.HnCustomController;
 
 public class DemoApplication extends Application {
-    private static final String TAG = "DemoApplication";
-    // 国内个性化推荐开关，国内SDK由外部实媒体现传入必传参数
-    private static boolean isLimit = true; // 个性化广告
 
+    private static final String TAG = "DemoApplication";
+
+    /**
+     * 媒体ID
+     */
     private final static String APPId = "1640545857217757184";
+
+    /**
+     * 媒体appKey
+     */
     private final static String APPKey = "PuWq5LFla2vJ8XvZdHxsD7s6oYFg3zAGnL9ACczccvU=";
+
     public static Context sContext;
+
     @Override
     public void onCreate() {
         super.onCreate();

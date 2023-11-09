@@ -21,11 +21,21 @@ public class RewardActivity extends BaseActivity {
     private static final String TAG = RewardActivity.class.getSimpleName();
 
     private TextView mTvMsg;
+
     private Button mBtnRewardContent;
+
+    /**
+     * 广告位ID
+     */
     private String mSlotId = "1698589518466908160";
+
     private String mRewardName = "Q点券";
+
     private double mRewardAmount = 1000;
 
+    /**
+     * 广告对象
+     */
     private RewardExpressAd mRewardExpressAd;
 
     @Override
@@ -41,94 +51,34 @@ public class RewardActivity extends BaseActivity {
         mTvMsg = findViewById(R.id.tv_msg);
         mBtnRewardContent = findViewById(R.id.btn_reward_content);
         mBtnRewardContent.setVisibility(View.INVISIBLE);
-        btnReward.setOnClickListener(view -> {
-            obtainAd();
-        });
+        btnReward.setOnClickListener(view -> obtainAd());
     }
 
     /**
      * 获取广告
      */
     private void obtainAd() {
+        // step1：创建广告请求参数对象（AdSlot）。
         AdSlot adSlot = new AdSlot.Builder()
-                .setSlotId(mSlotId)
-                .setRewardAmount(mRewardAmount)
-                .setRewardName(mRewardName)
-                .build();
+            .setSlotId(mSlotId) // 必填，设置广告位ID。
+            .setRewardAmount(mRewardAmount) // 设置激励视频广告奖励数量
+            .setRewardName(mRewardName) // 设置激励视频广告奖励名称
+            .build();
+        // step4：构建广告加载器，传入已创建好的广告请求参数对象与广告加载状态监听器。
         RewardAdLoad load = new RewardAdLoad.Builder()
-                .setRewardAdLoadListener(new AdLoadListener())
-                .setAdSlot(adSlot)
-                .build();
+            .setRewardAdLoadListener(mAdLoadListener) // 必填，注册广告加载状态监听器。
+            .setAdSlot(adSlot) // 必填，设置广告请求参数。
+            .build();
+        // step5：加载广告
         load.loadAd();
     }
 
     /**
-     * 广告事件监听器
-     */
-    private class MyAdListener extends AdListener {
-
-        /**
-         * 广告曝光时回调
-         */
-        @Override
-        public void onAdImpression() {
-            super.onAdImpression();
-            HiAdsLog.i(TAG, "onAdImpression...");
-            Toast.makeText(RewardActivity.this,
-                    getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
-        }
-
-        /**
-         * 广告曝光失败时回调
-         *
-         * @param msg 曝光失败信息
-         */
-        @Override
-        public void onAdImpressionFailed(String msg) {
-            super.onAdImpressionFailed(msg);
-            HiAdsLog.i(TAG, "onAdImpressionFailed, msg: " + msg);
-            Toast.makeText(RewardActivity.this,
-                    getString(R.string.ad_impression_failed), Toast.LENGTH_SHORT).show();
-        }
-
-        /**
-         * 广告被点击时回调
-         */
-        @Override
-        public void onAdClicked() {
-            super.onAdClicked();
-            HiAdsLog.i(TAG, "onAdClicked...");
-            Toast.makeText(RewardActivity.this,
-                    getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
-        }
-
-        /**
-         * 广告关闭时回调
-         */
-        @Override
-        public void onAdClosed() {
-            super.onAdClosed();
-            HiAdsLog.i(TAG, "onAdClosed...");
-            Toast.makeText(RewardActivity.this,
-                    getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
-        }
-
-        /**
-         * 广告成功跳转小程序时回调
-         */
-        @Override
-        public void onMiniAppStarted() {
-            super.onMiniAppStarted();
-            HiAdsLog.i(TAG, "onMiniAppStarted...");
-            Toast.makeText(RewardActivity.this,
-                    getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    /**
+     * step2：实现广告加载状态监听器，加载过程中获取广告的状态变化。
+     * <br>
      * 广告加载状态监听器
      */
-    public class AdLoadListener implements RewardAdLoadListener {
+    private final RewardAdLoadListener mAdLoadListener = new RewardAdLoadListener() {
 
         /**
          * 广告加载成功回调
@@ -139,11 +89,67 @@ public class RewardActivity extends BaseActivity {
         public void onLoadSuccess(RewardExpressAd rewardExpressAd) {
             mRewardExpressAd = rewardExpressAd;
             HiAdsLog.i(TAG, "onLoadSuccess, ad load success");
-            rewardExpressAd.setAdListener(new MyAdListener());
+            // 注册广告事件监听器，您可根据需求实现接口并按需重写您需要接收通知的方法。
+            rewardExpressAd.setAdListener(new AdListener(){
+
+                /**
+                 * 广告曝光时回调
+                 */
+                @Override
+                public void onAdImpression() {
+                    super.onAdImpression();
+                    HiAdsLog.i(TAG, "onAdImpression...");
+                    Toast.makeText(RewardActivity.this, getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                 * 广告曝光失败时回调
+                 *
+                 * @param msg 曝光失败信息
+                 */
+                @Override
+                public void onAdImpressionFailed(String msg) {
+                    super.onAdImpressionFailed(msg);
+                    HiAdsLog.i(TAG, "onAdImpressionFailed, msg: " + msg);
+                    Toast.makeText(RewardActivity.this, getString(R.string.ad_impression_failed), Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                 * 广告被点击时回调
+                 */
+                @Override
+                public void onAdClicked() {
+                    super.onAdClicked();
+                    HiAdsLog.i(TAG, "onAdClicked...");
+                    Toast.makeText(RewardActivity.this, getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                 * 广告关闭时回调
+                 */
+                @Override
+                public void onAdClosed() {
+                    super.onAdClosed();
+                    HiAdsLog.i(TAG, "onAdClosed...");
+                    Toast.makeText(RewardActivity.this, getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                 * 广告成功跳转小程序时回调
+                 */
+                @Override
+                public void onMiniAppStarted() {
+                    super.onMiniAppStarted();
+                    HiAdsLog.i(TAG, "onMiniAppStarted...");
+                    Toast.makeText(RewardActivity.this, getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
+                }
+            });
+            // step3：在请求成功回调里，使用返回的广告对象作渲染处理。
             rewardExpressAd.show(RewardActivity.this, new RewardExpressAd.RewardAdStatusListener() {
                 @Override
                 public void onRewardAdClosed() {
                     HiAdsLog.i(TAG,"onRewardAdClosed");
+                    releaseAd();
                 }
 
                 @Override
@@ -178,15 +184,23 @@ public class RewardActivity extends BaseActivity {
             mTvMsg.setText(getString(R.string.wrong_msg) + code + " " + errorMsg);
             mTvMsg.setVisibility(View.VISIBLE);
         }
-    }
+    };
 
     /**
-     * 页面不可见需要移除广告view
+     * 页面不可见时需要销毁广告
      */
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        releaseAd();
+    }
+
+    /**
+     * 销毁广告
+     */
+    private void releaseAd() {
         if (mRewardExpressAd != null) {
+            HiAdsLog.i(TAG, "releaseAd...");
             mRewardExpressAd.release();
         }
     }
