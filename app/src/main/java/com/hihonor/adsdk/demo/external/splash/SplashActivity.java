@@ -17,7 +17,12 @@ import com.hihonor.adsdk.demo.external.common.BaseActivity;
 import com.hihonor.adsdk.demo.external.utils.GlobalConfig;
 
 public class SplashActivity extends BaseActivity {
+
     private final static String TAG = "SplashActivityTAG";
+
+    /**
+     * 广告位ID
+     */
     private final String slotId = "1698591998676959232";
 
     @Override

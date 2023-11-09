@@ -20,9 +20,17 @@ import com.hihonor.adsdk.interstitial.InterstitialAdLoad;
 
 public class InterstitialActivity extends BaseActivity {
     private final static String TAG = "InterstitialActivity";
+
+    /**
+     * 广告位ID
+     */
     private String mSlotId = "1698593762892578816";
 
     private TextView mTvMsg;
+
+    /**
+     * 广告对象
+     */
     private InterstitialExpressAd mInterstitialExpressAd;
 
     @Override
@@ -36,29 +44,32 @@ public class InterstitialActivity extends BaseActivity {
     private void initView() {
         mTvMsg = findViewById(R.id.tv_msg);
         Button btnIns = findViewById(R.id.btn_ins);
-        btnIns.setOnClickListener(view -> {
-            obtainAd();
-        });
+        btnIns.setOnClickListener(view -> obtainAd());
     }
 
     /**
      * 获取广告
      */
     private void obtainAd() {
+        // step1：创建广告请求参数对象（AdSlot）。
         AdSlot adSlot = new AdSlot.Builder()
-                .setSlotId(mSlotId)
-                .build();
+            .setSlotId(mSlotId) // 必填，设置广告位ID。
+            .build();
+        // step4：构建广告加载器，传入已创建好的广告请求参数对象与广告加载状态监听器。
         InterstitialAdLoad load = new InterstitialAdLoad.Builder()
-                .setAdSlot(adSlot)
-                .setInterstitialAdLoadListener(new AdLoadListener())
-                .build();
+            .setInterstitialAdLoadListener(mAdLoadListener) // 必填，注册广告加载状态监听器。
+            .setAdSlot(adSlot) // 必填，设置广告请求参数。
+            .build();
+        // step5：加载广告
         load.loadAd();
     }
 
     /**
+     * step2：实现广告加载状态监听器，加载过程中获取广告的状态变化。
+     * <br>
      * 广告加载状态监听器
      */
-    private class AdLoadListener implements InterstitialAdLoadListener {
+    private final InterstitialAdLoadListener mAdLoadListener = new InterstitialAdLoadListener() {
 
         /**
          * 广告加载成功回调。
@@ -70,7 +81,63 @@ public class InterstitialActivity extends BaseActivity {
             HiAdsLog.i(TAG, "onAdLoaded, ad load success");
             mInterstitialExpressAd = interstitialExpressAd;
             ToastUtil.showShortToast("加载成功");
-            mInterstitialExpressAd.setAdListener(new MyAdListener());
+            // 注册广告事件监听器，您可根据需求实现接口并按需重写您需要接收通知的方法。
+            mInterstitialExpressAd.setAdListener(new AdListener(){
+
+                /**
+                 * 广告曝光时回调
+                 */
+                @Override
+                public void onAdImpression() {
+                    super.onAdImpression();
+                    HiAdsLog.i(TAG, "onAdImpression...");
+                    Toast.makeText(InterstitialActivity.this, getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                 * 广告曝光失败时回调
+                 *
+                 * @param msg 曝光失败信息
+                 */
+                @Override
+                public void onAdImpressionFailed(String msg) {
+                    super.onAdImpressionFailed(msg);
+                    HiAdsLog.i(TAG, "onAdImpressionFailed, msg: " + msg);
+                    Toast.makeText(InterstitialActivity.this, getString(R.string.ad_impression_failed), Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                 * 广告被点击时回调
+                 */
+                @Override
+                public void onAdClicked() {
+                    super.onAdClicked();
+                    HiAdsLog.i(TAG, "onAdClicked...");
+                    Toast.makeText(InterstitialActivity.this, getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                 * 广告关闭时回调
+                 */
+                @Override
+                public void onAdClosed() {
+                    super.onAdClosed();
+                    HiAdsLog.i(TAG, "onAdClosed...");
+                    Toast.makeText(InterstitialActivity.this, getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
+                    releaseAd();
+                }
+
+                /**
+                 * 广告成功跳转小程序时回调
+                 */
+                @Override
+                public void onMiniAppStarted() {
+                    super.onMiniAppStarted();
+                    HiAdsLog.i(TAG, "onMiniAppStarted...");
+                    Toast.makeText(InterstitialActivity.this, getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
+                }
+            });
+            // step3：在请求成功回调里，使用返回的广告对象作渲染处理。
             mInterstitialExpressAd.show(InterstitialActivity.this);
         }
 
@@ -86,77 +153,24 @@ public class InterstitialActivity extends BaseActivity {
             mTvMsg.setVisibility(View.VISIBLE);
             mTvMsg.setText("err : " + code + ", msg is :" + errorMsg);
         }
-    }
+    };
 
     /**
-     * 广告事件监听器
+     * 页面不可见时需要销毁广告
      */
-    private class MyAdListener extends AdListener {
-
-        /**
-         * 广告曝光时回调
-         */
-        @Override
-        public void onAdImpression() {
-            super.onAdImpression();
-            HiAdsLog.i(TAG, "onAdImpression...");
-            Toast.makeText(InterstitialActivity.this,
-                    getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
-        }
-
-        /**
-         * 广告曝光失败时回调
-         *
-         * @param msg 曝光失败信息
-         */
-        @Override
-        public void onAdImpressionFailed(String msg) {
-            super.onAdImpressionFailed(msg);
-            HiAdsLog.i(TAG, "onAdImpressionFailed, msg: " + msg);
-            Toast.makeText(InterstitialActivity.this,
-                    getString(R.string.ad_impression_failed), Toast.LENGTH_SHORT).show();
-        }
-
-        /**
-         * 广告被点击时回调
-         */
-        @Override
-        public void onAdClicked() {
-            super.onAdClicked();
-            HiAdsLog.i(TAG, "onAdClicked...");
-            Toast.makeText(InterstitialActivity.this,
-                    getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
-        }
-
-        /**
-         * 广告关闭时回调
-         */
-        @Override
-        public void onAdClosed() {
-            super.onAdClosed();
-            HiAdsLog.i(TAG, "onAdClosed...");
-            Toast.makeText(InterstitialActivity.this,
-                    getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
-        }
-
-        /**
-         * 广告成功跳转小程序时回调
-         */
-        @Override
-        public void onMiniAppStarted() {
-            super.onMiniAppStarted();
-            HiAdsLog.i(TAG, "onMiniAppStarted...");
-            Toast.makeText(InterstitialActivity.this,
-                    getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
-        }
-    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         HiAdsLog.i(TAG, "onDestroy");
+        releaseAd();
+    }
+
+    /**
+     * 销毁广告
+     */
+    private void releaseAd() {
         if (mInterstitialExpressAd != null) {
-            HiAdsLog.i(TAG, "mInterstitialExpressAd is not null");
+            HiAdsLog.i(TAG, "releaseAd...");
             mInterstitialExpressAd.release();
         }
     }

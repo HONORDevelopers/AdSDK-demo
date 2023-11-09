@@ -32,8 +32,14 @@ import com.hihonor.adsdk.demo.external.utils.GlobalConfig;
 import java.util.List;
 
 public class SplashSelfActivity extends Activity implements ShakeManager.OnShakeListener {
+
     private static final String TAG = "SplashSelfActivity";
+
+    /**
+     * 广告位ID
+     */
     private String mSlotId = "1698591998676959232";
+
     private long mTimeOut = 0;
 
     /**
@@ -43,24 +49,33 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
 
     private FrameLayout mRootView;
 
+    /**
+     * 广告对象
+     */
     private SplashExpressAd mSplashExpressAd;
 
     private SplashAdRootView splashAdRootView;
 
     private FrameLayout mSplashLayout;
+
     private ImageView mAdImageView;
+
     private ImageView mIconImageView;
-    private FrameLayout mIconLayout;
+
     private LottieAnimationView lottieAnimationView;
+
     private LottieAnimationView sweepAnimationView;
 
     private CountdownView mCountdownView;
+
     private TextView adMediaNameView;
+
     private TextView mAdFlagView;
+
     private TextView mActionTipsView;
 
     private TextView mTargetTipsView;
-    private TextView mTargetClickView;
+
     private View mTargetClickLayout;
 
     private float downY;
@@ -84,7 +99,6 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
         mAdImageView = itemView.findViewById(R.id.ads_splash_ad_img);
         mCountdownView = itemView.findViewById(R.id.ad_countdown);
         mIconImageView = itemView.findViewById(R.id.ads_splash_icon_img);
-        mIconLayout = itemView.findViewById(R.id.ads_icon_ima_layout);
         lottieAnimationView = itemView.findViewById(R.id.ad_animation_view);
         sweepAnimationView = itemView.findViewById(R.id.ads_click_button_sweep);
         adMediaNameView = itemView.findViewById(R.id.ads_media_name);
@@ -92,7 +106,6 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
         mActionTipsView = itemView.findViewById(R.id.ad_action_prompt);
         mTargetTipsView = itemView.findViewById(R.id.ad_action_result);
         mTargetClickLayout = itemView.findViewById(R.id.ads_click_layout);
-        mTargetClickView = itemView.findViewById(R.id.ad_action_click_result);
         setSplashLayoutParam();
     }
 
@@ -103,17 +116,20 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
     }
 
     public void obtainAd() {
+        // step1：创建广告请求参数对象（AdSlot）。
         AdSlot.Builder builder = new AdSlot.Builder()
-                .setSlotId(mSlotId)
-                .setRenderType(GlobalConfig.AD_RENDERING_TYPE.SELF_RENDERING)
-                .setLoadType(GlobalConfig.AD_LOAD_TYPE.NORMAL_REQUEST);
+            .setSlotId(mSlotId) // 必填，设置广告位ID。
+            .setRenderType(1) // 设置渲染类型，0：模板渲染； 1 ：自渲染；
+            .setLoadType(0); // 设置媒体请求Type，目前仅为开屏广告使用。0：普通加载方式，会首先去读缓存； 1 ：预缓存加载，将数据保存至缓存； -1：默认请求方式，表示直接进行网络请求，数据不保存缓存
         if (mTimeOut > 0) {
             builder.setTimeOutMillis(mTimeOut);
         }
+        // step4：构建广告加载器，传入已创建好的广告请求参数对象与广告加载状态监听器。
         SplashAdLoad load = new SplashAdLoad.Builder()
-                .setSplashAdLoadListener(new AdLoadListener())
-                .setAdSlot(builder.build())
-                .build();
+            .setSplashAdLoadListener(mAdLoadListener) // 必填，注册广告加载状态监听器。
+            .setAdSlot(builder.build()) // 必填，设置广告请求参数。
+            .build();
+        // step5：加载广告
         load.loadAd();
     }
 
@@ -190,24 +206,6 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
         mForceGoMain = true;
     }
 
-    /**
-     * 页面不可见需要移除广告view
-     */
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (shakeManager != null) {
-            shakeManager.unregister();
-        }
-        // 加载广告的view
-        if (mRootView != null) {
-            mRootView.removeAllViews();
-        }
-        if (mSplashExpressAd != null) {
-            mSplashExpressAd.release();
-        }
-    }
-
     public void startHomeActivity() {
         // 倒计时结束或者点击跳过
         Intent intent = new Intent(SplashSelfActivity.this, MainActivity.class);
@@ -216,86 +214,11 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
     }
 
     /**
-     * 广告事件监听器
-     */
-    private class MyAdListener extends AdListener {
-
-        /**
-         * 广告曝光时回调
-         */
-        @Override
-        public void onAdImpression() {
-            super.onAdImpression();
-            HiAdsLog.i(TAG, "onAdImpression...");
-            Toast.makeText(SplashSelfActivity.this,
-                    getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
-        }
-
-        /**
-         * 广告曝光失败时回调
-         *
-         * @param msg 曝光失败信息
-         */
-        @Override
-        public void onAdImpressionFailed(String msg) {
-            super.onAdImpressionFailed(msg);
-            HiAdsLog.i(TAG, "onAdImpressionFailed, msg: " + msg);
-            Toast.makeText(SplashSelfActivity.this,
-                    getString(R.string.ad_impression_failed), Toast.LENGTH_SHORT).show();
-        }
-
-        /**
-         * 广告被点击时回调
-         */
-        @Override
-        public void onAdClicked() {
-            super.onAdClicked();
-            HiAdsLog.i(TAG, "onAdClicked...");
-            Toast.makeText(SplashSelfActivity.this,
-                    getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
-        }
-
-        /**
-         * 广告关闭时回调
-         */
-        @Override
-        public void onAdClosed() {
-            super.onAdClosed();
-            HiAdsLog.i(TAG, "onAdClosed...");
-            Toast.makeText(SplashSelfActivity.this,
-                    getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
-        }
-
-        /**
-         * 开屏广告点击跳过或倒计时结束时回调
-         *
-         * @param type 0：点击跳过、1：倒计时结束
-         */
-        @Override
-        public void onAdSkip(int type) {
-            super.onAdSkip(type);
-            HiAdsLog.i(TAG, "onAdSkip, type: " + type);
-            Toast.makeText(SplashSelfActivity.this,
-                    getString(R.string.ad_skip), Toast.LENGTH_SHORT).show();
-            startHomeActivity();
-        }
-
-        /**
-         * 广告成功跳转小程序时回调
-         */
-        @Override
-        public void onMiniAppStarted() {
-            super.onMiniAppStarted();
-            HiAdsLog.i(TAG, "onMiniAppStarted...");
-            Toast.makeText(SplashSelfActivity.this,
-                    getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    /**
+     * step2：实现广告加载状态监听器，加载过程中获取广告的状态变化。
+     * <br>
      * 广告加载状态监听器
      */
-    private class AdLoadListener implements SplashAdLoadListener {
+    private final SplashAdLoadListener mAdLoadListener = new SplashAdLoadListener() {
 
         /**
          * 广告加载成功回调。
@@ -315,7 +238,74 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
             if (images != null && images.size() > 0) {
                 GlideUtils.loadImage(SplashSelfActivity.this, images.get(0), mAdImageView, 0);
             }
-            splashExpressAd.setAdListener(new MyAdListener());
+            // 注册广告事件监听器，您可根据需求实现接口并按需重写您需要接收通知的方法。
+            splashExpressAd.setAdListener(new AdListener(){
+
+                /**
+                 * 广告曝光时回调
+                 */
+                @Override
+                public void onAdImpression() {
+                    super.onAdImpression();
+                    HiAdsLog.i(TAG, "onAdImpression...");
+                    Toast.makeText(SplashSelfActivity.this, getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                 * 广告曝光失败时回调
+                 *
+                 * @param msg 曝光失败信息
+                 */
+                @Override
+                public void onAdImpressionFailed(String msg) {
+                    super.onAdImpressionFailed(msg);
+                    HiAdsLog.i(TAG, "onAdImpressionFailed, msg: " + msg);
+                    Toast.makeText(SplashSelfActivity.this, getString(R.string.ad_impression_failed), Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                 * 广告被点击时回调
+                 */
+                @Override
+                public void onAdClicked() {
+                    super.onAdClicked();
+                    HiAdsLog.i(TAG, "onAdClicked...");
+                    Toast.makeText(SplashSelfActivity.this, getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                 * 广告关闭时回调
+                 */
+                @Override
+                public void onAdClosed() {
+                    super.onAdClosed();
+                    HiAdsLog.i(TAG, "onAdClosed...");
+                    Toast.makeText(SplashSelfActivity.this, getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                 * 开屏广告点击跳过或倒计时结束时回调
+                 *
+                 * @param type 0：点击跳过、1：倒计时结束
+                 */
+                @Override
+                public void onAdSkip(int type) {
+                    super.onAdSkip(type);
+                    HiAdsLog.i(TAG, "onAdSkip, type: " + type);
+                    Toast.makeText(SplashSelfActivity.this, getString(R.string.ad_skip), Toast.LENGTH_SHORT).show();
+                    startHomeActivity();
+                }
+
+                /**
+                 * 广告成功跳转小程序时回调
+                 */
+                @Override
+                public void onMiniAppStarted() {
+                    super.onMiniAppStarted();
+                    HiAdsLog.i(TAG, "onMiniAppStarted...");
+                    Toast.makeText(SplashSelfActivity.this, getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
+                }
+            });
             // 设置跳过按钮
             mCountdownView.setBaseAd((BaseAd) splashExpressAd);
             mCountdownView.setCountdown(splashExpressAd.getImpDuration());
@@ -352,6 +342,10 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
             //媒体设置
             mIconImageView.setImageResource(R.drawable.ic_launcher_background);
             adMediaNameView.setText(getString(R.string.app_market));
+            // step3：在请求成功回调里，使用返回的广告对象作渲染处理。
+            // 注意： addView前需要把添加广告的容器rootView将控件上所有的view调用removeAllViews方法移除。
+            mRootView.removeAllViews();
+            // 添加view，进行广告展示
             mRootView.addView(itemView);
         }
 
@@ -367,6 +361,32 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
             Intent intent = new Intent(SplashSelfActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
+        }
+    };
+
+
+    /**
+     * 页面不可见时需要销毁广告
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        releaseAd();
+    }
+
+    /**
+     * 销毁广告
+     */
+    private void releaseAd() {
+        if (shakeManager != null) {
+            shakeManager.unregister();
+        }
+        if (mRootView != null) {
+            mRootView.removeAllViews();
+        }
+        if (mSplashExpressAd != null) {
+            HiAdsLog.i(TAG, "releaseAd...");
+            mSplashExpressAd.release();
         }
     }
 }
