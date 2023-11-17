@@ -21,7 +21,7 @@ ext {
     androidx_legacy_support = 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // 广告SDK包
-    honor_ad_sdk_version = "1.0.10.314"
+    honor_ad_sdk_version = "1.0.11.304"
     honor_ads_lite = "com.hihonor.mcs:ads-lite:$honor_ad_sdk_version"  // 使用这个就不用引用其他的了
     honor_ads_tools = "com.hihonor.mcs:ads-tools:$honor_ad_sdk_version" // 如果您需要使用自测工具，可以引用该包
 

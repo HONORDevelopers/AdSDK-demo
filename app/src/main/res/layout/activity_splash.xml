@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/root_view"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/root_view"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,8 +26,7 @@
             android:layout_gravity="end"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
-            android:visibility="gone"
-            android:text="@string/load_self_Splash"/>
+            android:text="@string/load_landscape_Splash"/>
 
         <Button
             android:id="@+id/bt_load_ad_pre_cache"
@@ -36,6 +36,15 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:text="@string/load_pre_cache"/>
+
+        <Button
+            android:id="@+id/bt_query_ad_pre_cache_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:text="@string/query_ad_pre_cache_count"/>
 
     </LinearLayout>
 

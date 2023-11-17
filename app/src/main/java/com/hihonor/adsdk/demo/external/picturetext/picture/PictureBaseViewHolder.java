@@ -38,7 +38,6 @@ import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
         titleView = findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_title);
         brandLogoView = findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_brand_logo);
         brandNameTextView = findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_brand_name);
-        landingTextView = findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_landing_text);
         adLandingLayout = findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_landing);
         adFlagView = findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_flag_view);
         adFlagCloseView = findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_close_view);
@@ -50,14 +49,6 @@ import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
         HiAdsLog.i(LOG_TAG, "render text view, set text data.");
         Context context = mRootView.getContext();
         brandNameTextView.setText(baseAd.getBrand());
-
-        // 设置跳转文案
-        int promotionPurpose = baseAd.getPromotionPurpose();
-        String landingText = context.getString(com.hihonor.adsdk.picturetextad.R.string.ads_click_view);
-        if (promotionPurpose == GlobalConfig.POPULARIZE_TYPE.APP_POPULARIZE_DOWNLOAD) {
-            landingText = context.getString(com.hihonor.adsdk.picturetextad.R.string.ads_click_install);
-        }
-        landingTextView.setText(landingText);
         if (isDisplayLogo()) {
             Style style = baseAd.getStyle();
             int radius = 0;
@@ -96,17 +87,15 @@ import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
             Drawable closeIconDrawable = context.getDrawable(
                     com.hihonor.adsdk.base.R.drawable.ic_honor_ads_close_black);
             adFlagCloseView.setCloseIconDrawable(closeIconDrawable);
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) adLandingLayout.getLayoutParams();
+            float marginEnd = context.getResources().getDimension(com.hihonor.adsdk.picturetextad.R.dimen.honor_ads_magic_dimens_element_horizontal_middle);
+            layoutParams.setMarginEnd((int) marginEnd);
         }
         showDownloadButton(baseAd);
     }
 
     private void showDownloadButton(PictureTextExpressAd baseAd) {
-        if (baseAd.getPromotionPurpose() == GlobalConfig.POPULARIZE_TYPE.APP_POPULARIZE_DOWNLOAD) {
-            downLoadButton.setVisibility(View.VISIBLE);
-            landingTextView.setVisibility(View.GONE);
-        } else {
-            downLoadButton.setVisibility(View.GONE);
-            landingTextView.setVisibility(View.VISIBLE);
-        }
+        downLoadButton.setVisibility(View.VISIBLE);
+        downLoadButton.setBaseAd(baseAd);
     }
 }

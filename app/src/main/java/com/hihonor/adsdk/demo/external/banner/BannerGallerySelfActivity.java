@@ -10,12 +10,12 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
-import com.hihonor.ads.banner.api.BannerAdLoad;
-import com.hihonor.ads.banner.api.BannerAdLoadListener;
-import com.hihonor.ads.banner.api.BannerAdRootView;
-import com.hihonor.ads.banner.api.BannerExpressAd;
+import com.hihonor.adsdk.banner.api.BannerAdLoad;
+import com.hihonor.adsdk.banner.api.BannerAdRootView;
 import com.hihonor.adsdk.base.AdSlot;
 import com.hihonor.adsdk.base.ErrorCode;
+import com.hihonor.adsdk.base.api.banner.BannerAdLoadListener;
+import com.hihonor.adsdk.base.api.banner.BannerExpressAd;
 import com.hihonor.adsdk.base.bean.DislikeInfo;
 import com.hihonor.adsdk.base.callback.AdListener;
 import com.hihonor.adsdk.base.callback.DislikeItemClickListener;

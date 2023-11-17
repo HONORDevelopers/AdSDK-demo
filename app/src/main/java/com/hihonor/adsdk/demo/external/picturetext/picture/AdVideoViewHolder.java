@@ -17,9 +17,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hihonor.ads.video.AdVideoSize;
-import com.hihonor.ads.video.OnVideoPlayListener;
-import com.hihonor.ads.video.VideoPlayState;
 import com.hihonor.adsdk.base.api.AdVideo;
 import com.hihonor.adsdk.base.api.feed.PictureTextExpressAd;
 import com.hihonor.adsdk.base.log.HiAdsLog;
@@ -29,6 +26,9 @@ import com.hihonor.adsdk.demo.external.R;
 import com.hihonor.adsdk.demo.external.utils.GlideUtils;
 import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
 import com.hihonor.adsdk.picturetextad.PictureTextAdRootView;
+import com.hihonor.adsdk.video.AdVideoSize;
+import com.hihonor.adsdk.video.OnVideoPlayListener;
+import com.hihonor.adsdk.video.VideoPlayState;
 
 public class AdVideoViewHolder extends RecyclerView.ViewHolder {
     private final String LOG_TAG = "AdVideoViewHolder";
