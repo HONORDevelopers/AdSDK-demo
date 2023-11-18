@@ -115,9 +115,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".splash.SplashSelfActivity"
+            android:name=".splash.LandscapeSplashActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.Adsdk.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
     </application>

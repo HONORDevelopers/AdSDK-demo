@@ -6,8 +6,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.hihonor.ads.splash.SplashAdLoad;
 import com.hihonor.adsdk.base.AdSlot;
+import com.hihonor.adsdk.base.HnAds;
 import com.hihonor.adsdk.base.api.splash.SplashAdLoadListener;
 import com.hihonor.adsdk.base.api.splash.SplashExpressAd;
 import com.hihonor.adsdk.base.callback.AdListener;
@@ -15,9 +15,9 @@ import com.hihonor.adsdk.base.log.HiAdsLog;
 import com.hihonor.adsdk.demo.external.R;
 import com.hihonor.adsdk.demo.external.common.BaseActivity;
 import com.hihonor.adsdk.demo.external.utils.GlobalConfig;
+import com.hihonor.adsdk.splash.SplashAdLoad;
 
 public class SplashActivity extends BaseActivity {
-
     private final static String TAG = "SplashActivityTAG";
 
     /**
@@ -38,12 +38,17 @@ public class SplashActivity extends BaseActivity {
             finish();
         });
         findViewById(R.id.bt_load_ad_1).setOnClickListener(view -> {
-            startActivity(new Intent(SplashActivity.this, SplashSelfActivity.class));
+            startActivity(new Intent(SplashActivity.this, LandscapeSplashActivity.class));
             finish();
         });
 
         findViewById(R.id.bt_load_ad_pre_cache).setOnClickListener(view -> {
             obtainAd();
+        });
+
+        findViewById(R.id.bt_query_ad_pre_cache_count).setOnClickListener(view -> {
+            int adCacheCount = HnAds.get().getAdCacheCount(slotId);
+            HiAdsLog.i(TAG, "adCacheCount = " + adCacheCount);
         });
     }
 

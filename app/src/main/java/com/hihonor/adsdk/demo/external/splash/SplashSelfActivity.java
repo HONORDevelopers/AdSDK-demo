@@ -15,9 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.hihonor.ads.splash.SplashActionType;
-import com.hihonor.ads.splash.SplashAdLoad;
-import com.hihonor.ads.splash.view.SplashAdRootView;
 import com.hihonor.adsdk.base.AdSlot;
 import com.hihonor.adsdk.base.api.BaseAd;
 import com.hihonor.adsdk.base.api.splash.SplashAdLoadListener;
@@ -28,6 +25,9 @@ import com.hihonor.adsdk.base.widget.base.CountdownView;
 import com.hihonor.adsdk.demo.external.MainActivity;
 import com.hihonor.adsdk.demo.external.R;
 import com.hihonor.adsdk.demo.external.utils.GlobalConfig;
+import com.hihonor.adsdk.splash.SplashActionType;
+import com.hihonor.adsdk.splash.SplashAdLoad;
+import com.hihonor.adsdk.splash.view.SplashAdRootView;
 
 import java.util.List;
 

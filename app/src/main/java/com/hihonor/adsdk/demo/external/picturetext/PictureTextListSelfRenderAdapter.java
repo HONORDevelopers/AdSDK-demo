@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hihonor.ads.video.OnVideoPlayListener;
 import com.hihonor.adsdk.base.api.CustomVideo;
 import com.hihonor.adsdk.base.api.feed.PictureTextExpressAd;
 import com.hihonor.adsdk.base.log.HiAdsLog;
@@ -26,6 +25,7 @@ import com.hihonor.adsdk.demo.external.picturetext.picture.PictureTextSelfRender
 import com.hihonor.adsdk.demo.external.utils.GlideUtils;
 import com.hihonor.adsdk.demo.external.widget.CustomVideoView;
 import com.hihonor.adsdk.picturetextad.PictureTextAdRootView;
+import com.hihonor.adsdk.video.OnVideoPlayListener;
 
 import java.util.List;
 

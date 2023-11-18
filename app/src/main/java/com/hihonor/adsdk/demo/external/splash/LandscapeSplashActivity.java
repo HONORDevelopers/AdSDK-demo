@@ -18,14 +18,14 @@ import com.hihonor.adsdk.demo.external.MainActivity;
 import com.hihonor.adsdk.demo.external.R;
 import com.hihonor.adsdk.splash.SplashAdLoad;
 
-public class SplashDefaultActivity extends Activity {
+public class LandscapeSplashActivity extends Activity {
 
     private static final String TAG = "SplashDefaultActivity";
 
     /**
      * 广告位ID
      */
-    private String mSlotId = "1698591998676959232";
+    private final String mSlotId = "1707057697284030464";
 
     private long mTimeOut = 0;
 
@@ -47,6 +47,11 @@ public class SplashDefaultActivity extends Activity {
     public void initView() {
         mRootView = findViewById(R.id.root_view);
         obtainAd();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
     /**
@@ -71,7 +76,7 @@ public class SplashDefaultActivity extends Activity {
 
     public void startHomeActivity() {
         // 倒计时结束或者点击跳过
-        Intent intent = new Intent(SplashDefaultActivity.this, MainActivity.class);
+        Intent intent = new Intent(LandscapeSplashActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
@@ -92,8 +97,13 @@ public class SplashDefaultActivity extends Activity {
         public void onLoadSuccess(SplashExpressAd splashExpressAd) {
             HiAdsLog.i(TAG, "onLoadSuccess, ad load success");
             mSplashExpressAd = splashExpressAd;
+            if (mRootView == null) {
+                HiAdsLog.e(TAG, "onLoadSuccess, mRootView is null");
+                return;
+            }
             splashExpressAd.setLogoResId(R.drawable.ic_launcher_background);
             splashExpressAd.setMediaNameString(getString(R.string.app_market));
+            // 注册广告事件监听器，您可根据需求实现接口并按需重写您需要接收通知的方法。
             splashExpressAd.setAdListener(new AdListener(){
 
                 /**
@@ -103,7 +113,7 @@ public class SplashDefaultActivity extends Activity {
                 public void onAdImpression() {
                     super.onAdImpression();
                     HiAdsLog.i(TAG, "onAdImpression...");
-                    Toast.makeText(SplashDefaultActivity.this, getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LandscapeSplashActivity.this, getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
                 }
 
                 /**
@@ -115,7 +125,7 @@ public class SplashDefaultActivity extends Activity {
                 public void onAdImpressionFailed(String msg) {
                     super.onAdImpressionFailed(msg);
                     HiAdsLog.i(TAG, "onAdImpressionFailed, msg: " + msg);
-                    Toast.makeText(SplashDefaultActivity.this, getString(R.string.ad_impression_failed), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LandscapeSplashActivity.this, getString(R.string.ad_impression_failed), Toast.LENGTH_SHORT).show();
                 }
 
                 /**
@@ -125,7 +135,7 @@ public class SplashDefaultActivity extends Activity {
                 public void onAdClicked() {
                     super.onAdClicked();
                     HiAdsLog.i(TAG, "onAdClicked...");
-                    Toast.makeText(SplashDefaultActivity.this, getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LandscapeSplashActivity.this, getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
                 }
 
                 /**
@@ -135,7 +145,7 @@ public class SplashDefaultActivity extends Activity {
                 public void onAdClosed() {
                     super.onAdClosed();
                     HiAdsLog.i(TAG, "onAdClosed...");
-                    Toast.makeText(SplashDefaultActivity.this, getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LandscapeSplashActivity.this, getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
                 }
 
                 /**
@@ -147,7 +157,7 @@ public class SplashDefaultActivity extends Activity {
                 public void onAdSkip(int type) {
                     super.onAdSkip(type);
                     HiAdsLog.i(TAG, "onAdSkip, type: " + type);
-                    Toast.makeText(SplashDefaultActivity.this, getString(R.string.ad_skip), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LandscapeSplashActivity.this, getString(R.string.ad_skip), Toast.LENGTH_SHORT).show();
                     startHomeActivity();
                 }
 
@@ -158,7 +168,7 @@ public class SplashDefaultActivity extends Activity {
                 public void onMiniAppStarted() {
                     super.onMiniAppStarted();
                     HiAdsLog.i(TAG, "onMiniAppStarted...");
-                    Toast.makeText(SplashDefaultActivity.this, getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LandscapeSplashActivity.this, getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
                 }
             });
             // step3：在请求成功回调里，使用返回的广告对象作渲染处理。
@@ -178,7 +188,7 @@ public class SplashDefaultActivity extends Activity {
         public void onFailed(String code, String errorMsg) {
             ToastUtil.showShortToast(getString(R.string.splash_request_failed));
             HiAdsLog.i(TAG, "onFailed: code: " + code + ", errorMsg: " + errorMsg);
-            Intent intent = new Intent(SplashDefaultActivity.this, MainActivity.class);
+            Intent intent = new Intent(LandscapeSplashActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         }

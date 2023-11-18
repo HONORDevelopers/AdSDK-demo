@@ -6,6 +6,7 @@
     <string name="app_name">荣耀广告SDK集成Demo</string>
 
     <!--    首页item-->
+    <string name="app_native_ad">原生广告</string>
     <string name="app_banner_ad">banner广告</string>
     <string name="app_reward_ad">激励广告</string>
     <string name="app_splash_ad">开屏广告</string>
@@ -15,8 +16,10 @@
     <string name="app_banner_gallery">轮播图</string>
     <string name="app_picture_text_ad">信息流广告</string>
     <string name="app_test_tools">测试工具</string>
+    <string name="app_search_native_ad">搜索APP集成原生广告</string>
     <string name="app_picture_text_template_render_ad">模板渲染</string>
     <string name="app_picture_text_self_render_ad">自渲染</string>
+    <string name="app_picture_text_install_ad">下载安装类广告</string>
     <string name="app_load_ad">加载广告</string>
     <string name="app_ad_close_tip">广告关闭</string>
     <string name="app_download">下载</string>
@@ -30,7 +33,9 @@
     <string name="load_self_Splash">加载开屏自渲染广告</string>
     <string name="load_pre_cache">预缓存请求</string>
     <string name="load_reward">加载激励视频广告</string>
+    <string name="load_landscape_Splash">加载横板开屏广告</string>
     <string name="load_interstital">加载插屏广告</string>
+    <string name="query_ad_pre_cache_count">查找缓存的不过期的广告数量</string>
     <string name="media_data">媒体数据</string>
     <string name="init_falied">初始化失败</string>
     <string name="ad_impression_success">展示成功</string>

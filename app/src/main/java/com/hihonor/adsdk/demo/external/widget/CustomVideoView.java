@@ -12,9 +12,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.VideoView;
 
-import com.hihonor.ads.video.OnVideoPlayListener;
 import com.hihonor.adsdk.base.api.CustomVideo;
 import com.hihonor.adsdk.base.log.HiAdsLog;
+import com.hihonor.adsdk.video.OnVideoPlayListener;
 
 /**
  * 功能描述
