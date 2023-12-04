@@ -169,7 +169,7 @@
                 android:layout_marginStart="@dimen/ads_app_magic_dimens_element_horizontal_middle"
                 android:layout_alignParentEnd="true" />
 
-            <com.hihonor.adsdk.base.widget.download.DownLoadButton
+            <com.hihonor.adsdk.base.widget.download.HnDownloadButton
                 android:id="@+id/ad_download"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

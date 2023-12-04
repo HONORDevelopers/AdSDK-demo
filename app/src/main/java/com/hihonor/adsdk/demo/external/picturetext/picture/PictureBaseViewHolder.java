@@ -12,10 +12,9 @@ import androidx.annotation.NonNull;
 import com.hihonor.adsdk.base.api.feed.PictureTextExpressAd;
 import com.hihonor.adsdk.base.bean.Style;
 import com.hihonor.adsdk.base.log.HiAdsLog;
-import com.hihonor.adsdk.base.widget.download.DownLoadButton;
+import com.hihonor.adsdk.base.widget.download.HnDownloadButton;
 import com.hihonor.adsdk.demo.external.R;
 import com.hihonor.adsdk.demo.external.utils.GlideUtils;
-import com.hihonor.adsdk.demo.external.utils.GlobalConfig;
 import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
 
 /**
@@ -30,7 +29,7 @@ import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
     protected TextView brandNameTextView;
     protected TextView landingTextView;
     protected View adLandingLayout;
-    protected DownLoadButton downLoadButton;
+    protected HnDownloadButton downLoadButton;
 
     public PictureBaseViewHolder(View mRootView) {
         super(mRootView);

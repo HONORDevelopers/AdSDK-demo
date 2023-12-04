@@ -87,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <com.hihonor.adsdk.base.widget.download.DownLoadButton
+        <com.hihonor.adsdk.base.widget.download.HnDownloadButton
             android:id="@+id/ad_download"
             app:ads_support_customization="true"
             app:ads_button_small="true"

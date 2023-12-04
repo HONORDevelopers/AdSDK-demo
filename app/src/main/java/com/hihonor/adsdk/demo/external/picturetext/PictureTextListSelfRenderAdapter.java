@@ -16,7 +16,7 @@ import com.hihonor.adsdk.base.api.CustomVideo;
 import com.hihonor.adsdk.base.api.feed.PictureTextExpressAd;
 import com.hihonor.adsdk.base.log.HiAdsLog;
 import com.hihonor.adsdk.base.widget.base.AdFlagCloseView;
-import com.hihonor.adsdk.base.widget.download.DownLoadButton;
+import com.hihonor.adsdk.base.widget.download.HnDownloadButton;
 import com.hihonor.adsdk.demo.external.DemoApplication;
 import com.hihonor.adsdk.demo.external.R;
 import com.hihonor.adsdk.demo.external.picturetext.picture.AdVideoViewHolder;
@@ -149,7 +149,7 @@ public class PictureTextListSelfRenderAdapter extends RecyclerView.Adapter<Recyc
         private TextView brandView;
         private TextView timeText;
         private ImageView logoView;
-        private DownLoadButton mDownLoadButton;
+        private HnDownloadButton mDownLoadButton;
         private ImageView ivMute;
         private boolean isMute;
         private AdFlagCloseView mAdFlagCloseView;

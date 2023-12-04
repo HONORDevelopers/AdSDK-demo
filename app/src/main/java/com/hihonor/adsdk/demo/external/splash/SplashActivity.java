@@ -2,6 +2,7 @@ package com.hihonor.adsdk.demo.external.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
