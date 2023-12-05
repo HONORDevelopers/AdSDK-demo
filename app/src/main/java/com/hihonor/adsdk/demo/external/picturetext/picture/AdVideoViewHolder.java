@@ -21,7 +21,7 @@ import com.hihonor.adsdk.base.api.AdVideo;
 import com.hihonor.adsdk.base.api.feed.PictureTextExpressAd;
 import com.hihonor.adsdk.base.log.HiAdsLog;
 import com.hihonor.adsdk.base.widget.base.AdFlagCloseView;
-import com.hihonor.adsdk.base.widget.download.DownLoadButton;
+import com.hihonor.adsdk.base.widget.download.HnDownloadButton;
 import com.hihonor.adsdk.demo.external.R;
 import com.hihonor.adsdk.demo.external.utils.GlideUtils;
 import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
@@ -35,7 +35,7 @@ public class AdVideoViewHolder extends RecyclerView.ViewHolder {
     protected RelativeLayout adBrandAutoSizeLayout;
     protected ImageView brandLogoView;
     protected TextView brandNameTextView;
-    protected DownLoadButton downLoadButton;
+    protected HnDownloadButton downLoadButton;
     private View adPlayerView;
     private final ImageView adVideoStart;
     private final ImageView adVideoVolumeView;

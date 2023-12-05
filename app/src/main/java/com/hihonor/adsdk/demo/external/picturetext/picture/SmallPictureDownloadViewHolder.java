@@ -7,10 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hihonor.adsdk.base.api.feed.PictureTextExpressAd;
-import com.hihonor.adsdk.base.log.HiAdsLog;
-import com.hihonor.adsdk.base.widget.download.DownLoadButton;
 import com.hihonor.adsdk.demo.external.R;
-import com.hihonor.adsdk.demo.external.utils.GlobalConfig;
 import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
 
 /**

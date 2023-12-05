@@ -1,6 +1,5 @@
 package com.hihonor.adsdk.demo.external.banner;
 
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +36,12 @@ public class BannerDefaultActivity extends BaseActivity {
     /**
      * 广告位ID
      */
-    private String mSlotId = "1698586284462047232";
+    private final String mSlotId = "1698586284462047232";
+
+    /**
+     * 轮播时间
+     */
+    private final long INTERVAL_TIME = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +63,16 @@ public class BannerDefaultActivity extends BaseActivity {
     private void obtainAd() {
         // step1：创建广告请求参数对象（AdSlot）。
         AdSlot adSlot = new AdSlot.Builder()
-            .setSlotId(mSlotId) // 必填，设置广告位ID。
-            .build();
+                .setSlotId(mSlotId) // 必填，设置广告位ID。
+                .setWidth(1280) // 设置广告宽度，目前仅Banner广告使用。
+                .setHeight(720) // 设置广告高度，目前仅Banner广告使用。
+                .build();
         // step4：构建广告加载器，传入已创建好的广告请求参数对象与广告加载状态监听器。
         BannerAdLoad load = new BannerAdLoad.Builder()
-            .setBannerAdLoadListener(mAdLoadListener)
-            .setAdSlot(adSlot)
-            .build();
+                .setBannerAdLoadListener(mAdLoadListener) // 注册广告加载状态监听器。
+                .setAdSlot(adSlot) // 设置广告请求参数。
+                .build();
+        // step5：加载广告
         load.loadAd();
     }
 
@@ -85,7 +92,6 @@ public class BannerDefaultActivity extends BaseActivity {
         public void onLoadSuccess(BannerExpressAd bannerExpressAd) {
             mBannerExpressAd = bannerExpressAd;
             HiAdsLog.i(TAG, "onLoadSuccess, ad load success");
-            // 您可根据需求实现接口并按需重写您需要接收通知的方法。
             if (mRootView == null) {
                 HiAdsLog.e(TAG, "onLoadSuccess, mRootView is null");
                 return;
@@ -135,13 +141,14 @@ public class BannerDefaultActivity extends BaseActivity {
                 }
             });
             // 设置广告负反馈回调监听器
-            bannerExpressAd.setDislikeClickListener(new DislikeItemClickListener(){
+            bannerExpressAd.setDislikeClickListener(new DislikeItemClickListener() {
                 @Override
                 public void onItemClick(int position, @Nullable DislikeInfo dislikeInfo, @Nullable View target) {
                     mRootView.removeAllViews();
                     Toast.makeText(BannerDefaultActivity.this, getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
                 }
             });
+            bannerExpressAd.setIntervalTime(INTERVAL_TIME);
             // step3：在请求成功回调里，使用返回的广告对象作渲染处理。
             // 注意： addView前需要把添加广告的容器rootView将控件上所有的view调用removeAllViews方法移除。
             mRootView.removeAllViews();
@@ -158,7 +165,7 @@ public class BannerDefaultActivity extends BaseActivity {
         @Override
         public void onFailed(String code, String errorMsg) {
             HiAdsLog.i(TAG, "onFailed: code: " + code + ", errorMsg: " + errorMsg);
-            Toast.makeText(BannerDefaultActivity.this, errorMsg,Toast.LENGTH_SHORT).show();
+            Toast.makeText(BannerDefaultActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
         }
     };
 

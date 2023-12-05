@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import com.hihonor.adsdk.base.api.feed.PictureTextExpressAd;
 import com.hihonor.adsdk.base.callback.DislikeItemClickListener;
 import com.hihonor.adsdk.base.log.HiAdsLog;
-import com.hihonor.adsdk.base.widget.download.DownLoadButton;
+import com.hihonor.adsdk.base.widget.download.HnDownloadButton;
 import com.hihonor.adsdk.demo.external.R;
 import com.hihonor.adsdk.demo.external.utils.GlobalConfig;
 import com.hihonor.adsdk.picturetextad.PictureTextAdRootView;
@@ -88,7 +88,7 @@ public class PictureTextSelfRenderView extends FrameLayout {
         PictureBaseAdViewAdapter.ViewHolder holder = mAdapter.createViewHolder(itemType, getContext());
         View childView;
         if (holder != null && (childView = holder.getRootView()) != null) {
-            DownLoadButton downLoadButton = childView.findViewById(R.id.ad_download);
+            HnDownloadButton downLoadButton = childView.findViewById(R.id.ad_download);
             pictureTextAdRootView.addView(childView);
             pictureTextAdRootView.setAdCloseView(holder.getAdFlagCloseView());
             pictureTextAdRootView.setDislikeItemClickListener((position, dislikeInfo, target) -> {

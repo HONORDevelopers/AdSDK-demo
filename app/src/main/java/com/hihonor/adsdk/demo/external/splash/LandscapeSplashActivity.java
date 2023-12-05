@@ -3,6 +3,7 @@ package com.hihonor.adsdk.demo.external.splash;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -101,6 +102,7 @@ public class LandscapeSplashActivity extends Activity {
                 HiAdsLog.e(TAG, "onLoadSuccess, mRootView is null");
                 return;
             }
+            View splashView =  splashExpressAd.getExpressAdView();
             splashExpressAd.setLogoResId(R.drawable.ic_launcher_background);
             splashExpressAd.setMediaNameString(getString(R.string.app_market));
             // 注册广告事件监听器，您可根据需求实现接口并按需重写您需要接收通知的方法。
@@ -175,7 +177,7 @@ public class LandscapeSplashActivity extends Activity {
             // 注意： addView前需要把添加广告的容器rootView将控件上所有的view调用removeAllViews方法移除。
             mRootView.removeAllViews();
             // 添加view，进行广告展示
-            mRootView.addView(splashExpressAd.getExpressAdView());
+            mRootView.addView(splashView);
         }
 
         /**
