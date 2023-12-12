@@ -10,7 +10,7 @@ package com.hihonor.adsdk.demo.external.utils;
  *
  * @since 2022-06-01
  */
-public interface GlobalConfig {
+public interface Constants {
     /**
      * 推广类型
      */
@@ -47,6 +47,7 @@ public interface GlobalConfig {
         int JUMP_BUTTON = 3;
         int OTHER = 4;
         int VIDEO = 5;
+        int TEXT = 6;
     }
 
     interface SUB_TYPE {
@@ -97,5 +98,24 @@ public interface GlobalConfig {
         int ACTION_CLICK = 0;
         int ACTION_SLIDE_UP = 1;
         int ACTION_SHAKE = 2;
+    }
+    interface SCENE_TYPE {
+        //广告界面
+        int AD_DEFAULT = 1;
+
+        //详情页
+        int AD_DETAILS_PAGE = 0;
+    }
+    interface AD_ITEM_TYPE {
+        int NORMAL = 0;
+        int AD_VIDEO = 1;
+        int CUSTOM_VIDEO = 2;
+        int BIG_TOP_TEXT = 3;
+        int BIG_TOP_PICTURE = 4;
+        int THREE_TOP_TEXT = 5;
+        int THREE_TOP_PICTURE = 6;
+        int SMALL_LEFT_TEXT = 7;
+        int SMALL_LEFT_PICTURE = 8;
+        int APP_PICTURE = 9;
     }
 }

@@ -13,7 +13,7 @@ import com.hihonor.adsdk.base.callback.DislikeItemClickListener;
 import com.hihonor.adsdk.base.log.HiAdsLog;
 import com.hihonor.adsdk.base.widget.download.HnDownloadButton;
 import com.hihonor.adsdk.demo.external.R;
-import com.hihonor.adsdk.demo.external.utils.GlobalConfig;
+import com.hihonor.adsdk.demo.external.utils.Constants;
 import com.hihonor.adsdk.picturetextad.PictureTextAdRootView;
 
 /**
@@ -111,16 +111,16 @@ public class PictureTextSelfRenderView extends FrameLayout {
         pictureTextAdRootView.removeAllViews();
         pictureTextAdRootView.setAd(ad);
         switch (subType) {
-            case GlobalConfig.SUB_TYPE.BIG_PICTURE:
+            case Constants.SUB_TYPE.BIG_PICTURE:
                 setAdapter(new BigPictureAdapter(ad));
                 break;
-            case GlobalConfig.SUB_TYPE.SMALL_PICTURE:
+            case Constants.SUB_TYPE.SMALL_PICTURE:
                 setAdapter(new SmallPictureAdapter(ad));
                 break;
-            case GlobalConfig.SUB_TYPE.THREE_PICTURE:
+            case Constants.SUB_TYPE.THREE_PICTURE:
                 setAdapter(new ThreePictureAdapter(ad));
                 break;
-            case GlobalConfig.SUB_TYPE.APP_PICTURE:
+            case Constants.SUB_TYPE.APP_PICTURE:
                 setAdapter(new AppPictureAdapter(ad));
                 break;
         }
@@ -131,8 +131,8 @@ public class PictureTextSelfRenderView extends FrameLayout {
     }
 
     private boolean isSupportAdType(int subType){
-        if(subType == GlobalConfig.SUB_TYPE.BIG_PICTURE || subType == GlobalConfig.SUB_TYPE.SMALL_PICTURE
-                || subType == GlobalConfig.SUB_TYPE.THREE_PICTURE || subType == GlobalConfig.SUB_TYPE.APP_PICTURE){
+        if(subType == Constants.SUB_TYPE.BIG_PICTURE || subType == Constants.SUB_TYPE.SMALL_PICTURE
+                || subType == Constants.SUB_TYPE.THREE_PICTURE || subType == Constants.SUB_TYPE.APP_PICTURE){
             return true;
         }
         return false;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.hihonor.adsdk.picturetextad.PictureTextAdRootView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:paddingStart="@dimen/ads_app_magic_dimens_max_start"
@@ -41,4 +41,4 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/ads_app_magic_dimens_element_horizontal_large"
         android:scaleType="fitXY" />
-</RelativeLayout>
+</com.hihonor.adsdk.picturetextad.PictureTextAdRootView>
