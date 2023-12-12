@@ -11,8 +11,8 @@ import com.hihonor.adsdk.base.api.feed.PictureTextExpressAd;
 import com.hihonor.adsdk.base.bean.Style;
 import com.hihonor.adsdk.base.log.HiAdsLog;
 import com.hihonor.adsdk.demo.external.R;
+import com.hihonor.adsdk.demo.external.utils.Constants;
 import com.hihonor.adsdk.demo.external.utils.DensityUtil;
-import com.hihonor.adsdk.demo.external.utils.GlobalConfig;
 
 /**
  * 大图适配器
@@ -33,7 +33,7 @@ public class BigPictureAdapter extends PictureBaseAdViewAdapter<BigPictureAdapte
         int layoutRes = R.layout.self_render_top_picture_bottom_text;
         if (style != null) {
             int layout = style.getLayout();
-            if (layout == GlobalConfig.LAYOUT.TOP_TEXT_BOTTOM_PICTURE) {
+            if (layout == Constants.LAYOUT.TOP_TEXT_BOTTOM_PICTURE) {
                 layoutRes = R.layout.self_render_top_text_bottom_picture;
             }
         }

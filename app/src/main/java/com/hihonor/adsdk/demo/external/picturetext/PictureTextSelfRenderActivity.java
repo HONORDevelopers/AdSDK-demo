@@ -19,6 +19,7 @@ import com.hihonor.adsdk.demo.external.R;
 import com.hihonor.adsdk.demo.external.common.BaseActivity;
 import com.hihonor.adsdk.demo.external.picturetext.picture.PictureMediaDataBean;
 import com.hihonor.adsdk.demo.external.utils.CollectionUtils;
+import com.hihonor.adsdk.demo.external.utils.Constants;
 import com.hihonor.adsdk.picturetextad.PictureTextAdLoad;
 
 import java.util.ArrayList;
@@ -132,14 +133,14 @@ public class PictureTextSelfRenderActivity extends BaseActivity {
                         + getString(R.string.home_page) + expressAd.getHomePage());
                 if (expressAd.hasVideo()) {
                     // 视频广告
-                    if (i % 2 == 0) {
-                        pictureMediaDataBean.setItemType(2);
+                    if (i % 2 != 0) {
+                        pictureMediaDataBean.setItemType(Constants.AD_ITEM_TYPE.AD_VIDEO);
                     } else {
-                        pictureMediaDataBean.setItemType(3);
+                        pictureMediaDataBean.setItemType( Constants.AD_ITEM_TYPE.CUSTOM_VIDEO);
                     }
                 } else {
                     // 信息流广告
-                    pictureMediaDataBean.setItemType(1);
+                    pictureMediaDataBean.setItemType(getItemType(expressAd));
                 }
                 // 注册广告事件监听器，您可根据需求实现接口并按需重写您需要接收通知的方法。
                 expressAd.setAdListener(new AdListener(){
@@ -195,6 +196,41 @@ public class PictureTextSelfRenderActivity extends BaseActivity {
         }
     };
 
+    private int getItemType(PictureTextExpressAd expressAd) {
+        // 信息流广告
+        int layout = 0;
+        if (expressAd.getStyle() != null) {
+            layout = expressAd.getStyle().getLayout();
+        }
+        if (expressAd.getSubType() == Constants.SUB_TYPE.BIG_PICTURE) {
+            if (layout == Constants.LAYOUT.TOP_PICTURE_BOTTOM_TEXT) {
+                return Constants.AD_ITEM_TYPE.BIG_TOP_PICTURE;
+            }
+            if (layout == Constants.LAYOUT.TOP_TEXT_BOTTOM_PICTURE) {
+                return Constants.AD_ITEM_TYPE.BIG_TOP_TEXT;
+            }
+        }
+        if (expressAd.getSubType() == Constants.SUB_TYPE.THREE_PICTURE) {
+            if (layout == Constants.LAYOUT.TOP_PICTURE_BOTTOM_TEXT) {
+                return Constants.AD_ITEM_TYPE.THREE_TOP_PICTURE;
+            }
+            if (layout == Constants.LAYOUT.TOP_TEXT_BOTTOM_PICTURE) {
+                return Constants.AD_ITEM_TYPE.THREE_TOP_TEXT;
+            }
+        }
+        if (expressAd.getSubType() == Constants.SUB_TYPE.SMALL_PICTURE) {
+            if (layout == Constants.LAYOUT.LEFT_TEXT_RIGHT_PICTURE) {
+                return Constants.AD_ITEM_TYPE.SMALL_LEFT_TEXT;
+            }
+            if (layout == Constants.LAYOUT.RIGHT_TEXT_LEFT_PICTURE) {
+                return Constants.AD_ITEM_TYPE.SMALL_LEFT_PICTURE;
+            }
+        }
+        if (expressAd.getSubType() == Constants.SUB_TYPE.APP_PICTURE) {
+            return Constants.AD_ITEM_TYPE.APP_PICTURE;
+        }
+        return Constants.AD_ITEM_TYPE.NORMAL;
+    }
     private void createMediaData(int number) {
         for (int i = 0; i < 3; i++) {
             PictureMediaDataBean pictureMediaDataBean = new PictureMediaDataBean();

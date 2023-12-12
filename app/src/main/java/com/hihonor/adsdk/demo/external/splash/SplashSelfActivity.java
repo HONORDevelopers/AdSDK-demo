@@ -24,7 +24,7 @@ import com.hihonor.adsdk.base.log.HiAdsLog;
 import com.hihonor.adsdk.base.widget.base.CountdownView;
 import com.hihonor.adsdk.demo.external.MainActivity;
 import com.hihonor.adsdk.demo.external.R;
-import com.hihonor.adsdk.demo.external.utils.GlobalConfig;
+import com.hihonor.adsdk.demo.external.utils.Constants;
 import com.hihonor.adsdk.splash.SplashActionType;
 import com.hihonor.adsdk.splash.SplashAdLoad;
 import com.hihonor.adsdk.splash.view.SplashAdRootView;
@@ -140,7 +140,7 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
                 break;
             case MotionEvent.ACTION_UP:
                 if (downY - event.getY() > 400) {
-                    startThirdPage(v, GlobalConfig.AD_ACTION_TYPE.ACTION_SLIDE_UP);
+                    startThirdPage(v, Constants.AD_ACTION_TYPE.ACTION_SLIDE_UP);
                 }
                 break;
         }
@@ -148,13 +148,13 @@ public class SplashSelfActivity extends Activity implements ShakeManager.OnShake
     }
 
     public void onClick(View view) {
-        startThirdPage(view, GlobalConfig.AD_ACTION_TYPE.ACTION_CLICK);
+        startThirdPage(view, Constants.AD_ACTION_TYPE.ACTION_CLICK);
     }
 
     @Override
     public void onShake() {
         HiAdsLog.i(TAG, "shake");
-        startThirdPage(mAdImageView, GlobalConfig.AD_ACTION_TYPE.ACTION_SHAKE);
+        startThirdPage(mAdImageView, Constants.AD_ACTION_TYPE.ACTION_SHAKE);
     }
 
     public void openClickListener() {

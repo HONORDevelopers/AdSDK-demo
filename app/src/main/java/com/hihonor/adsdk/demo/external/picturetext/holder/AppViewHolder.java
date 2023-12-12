@@ -1,0 +1,70 @@
+package com.hihonor.adsdk.demo.external.picturetext.holder;
+
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+
+import com.hihonor.adsdk.base.api.feed.PictureTextExpressAd;
+import com.hihonor.adsdk.base.widget.download.DownLoadButton;
+import com.hihonor.adsdk.demo.external.utils.Constants;
+import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
+
+/**
+ * 功能描述
+ *
+ * @since 2023-11-21
+ */
+public class AppViewHolder extends BaseViewHolder{
+    private static final int DP_VALUE = 4;
+    private final ImageView adImageView;
+
+    private final DownLoadButton adDownloadView;
+    private final TextView adTitle, adContent;
+    public AppViewHolder(@NonNull View itemView) {
+        super(itemView);
+        adImageView = mRootView.findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_image);
+        adDownloadView = mRootView.findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_download);
+        adTitle = mRootView.findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_title);
+        adContent = mRootView.findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_content);
+        adFlagView = mRootView.findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_flag_view);
+        adFlagCloseView = mRootView.findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_close_view);
+    }
+
+    @Override
+    public void bindData(@NonNull PictureTextExpressAd baseAd) {
+        Context context = mRootView.getContext();
+
+        setPictureImage(baseAd);
+        // 应用下载广告的主标题对应的字段是品牌名称，副标题对应的字段是广告标题
+        adTitle.setText(baseAd.getBrand());
+        adContent.setText(baseAd.getTitle());
+
+        adFlagView.setRectCornerRadius(ScreenUtils.dpToPx(DP_VALUE));
+        adFlagView.setViewPadding(ScreenUtils.dpToPx(DP_VALUE), 0, ScreenUtils.dpToPx(DP_VALUE), 0);
+        adFlagView.setVisibility(baseAd.getAdFlag() == 0 ? View.GONE : View.VISIBLE);
+        // 广告标签背景色适配深色模式，备注：UX未在参数表中找到对应的资源id，无法使用uikit资源直接适配，需手动判断。
+        int color = ScreenUtils.isDarkTheme() ? 0x33FFFFFF : 0x33000000;
+        adFlagView.setBgColor(color);
+
+        adFlagCloseView.setVisibility(baseAd.getCloseFlag() == 0 ? View.GONE : View.VISIBLE);
+        adFlagCloseView.setBgColor(context.getResources().getColor(com.hihonor.adsdk.picturetextad.R.color.honor_ads_magic_color_bg_translucent));
+        adFlagCloseView.setViewPadding(0, 0, 0, 0);
+        Drawable closeIconDrawable = context.getDrawable(com.hihonor.adsdk.picturetextad.R.drawable.honor_ads_icsvg_public_cancel_regular);
+        adFlagCloseView.setCloseIconDrawable(closeIconDrawable);
+
+        adDownloadView.setBaseAd(baseAd, Constants.SCENE_TYPE.AD_DEFAULT);
+    }
+
+    private void setPictureImage(PictureTextExpressAd baseAd) {
+        mRootView.post(()->{
+            Context context = mRootView.getContext();
+            // 加载图片
+            loadImage(context, (PictureTextExpressAd) baseAd, baseAd.getImages()
+                    , 0, adImageView, (int) cornerRadius);
+        });
+    }
+}

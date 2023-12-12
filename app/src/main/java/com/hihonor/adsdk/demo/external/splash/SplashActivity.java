@@ -2,7 +2,6 @@ package com.hihonor.adsdk.demo.external.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -15,7 +14,7 @@ import com.hihonor.adsdk.base.callback.AdListener;
 import com.hihonor.adsdk.base.log.HiAdsLog;
 import com.hihonor.adsdk.demo.external.R;
 import com.hihonor.adsdk.demo.external.common.BaseActivity;
-import com.hihonor.adsdk.demo.external.utils.GlobalConfig;
+import com.hihonor.adsdk.demo.external.utils.Constants;
 import com.hihonor.adsdk.splash.SplashAdLoad;
 
 public class SplashActivity extends BaseActivity {
@@ -56,7 +55,7 @@ public class SplashActivity extends BaseActivity {
     private void obtainAd() {
         AdSlot adSlot = new AdSlot.Builder()
                 .setSlotId(slotId)
-                .setLoadType(GlobalConfig.AD_LOAD_TYPE.PRECACHE_REQUEST)
+                .setLoadType(Constants.AD_LOAD_TYPE.PRECACHE_REQUEST)
                 .build();
         SplashAdLoad load = new SplashAdLoad.Builder()
                 .setSplashAdLoadListener(new AdLoadListener())
