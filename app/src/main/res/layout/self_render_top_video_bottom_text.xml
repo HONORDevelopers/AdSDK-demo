@@ -141,6 +141,7 @@
                 android:ellipsize="end"
                 android:fontFamily="@string/ads_app_magic_text_font_family_regular"
                 android:lines="1"
+                android:maxEms="6"
                 android:textAlignment="viewStart"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/ad_brand_logo"

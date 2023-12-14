@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import com.hihonor.adsdk.base.api.feed.PictureTextExpressAd;
 import com.hihonor.adsdk.base.log.HiAdsLog;
 import com.hihonor.adsdk.demo.external.utils.DensityUtil;
+import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
 
 /**
  * 功能描述
@@ -49,7 +50,7 @@ public class SmallAdViewHolder extends BaseViewHolder {
         float horizontalImagePadding = context.getResources()
                 .getDimension(com.hihonor.adsdk.picturetextad.R.dimen.honor_ads_magic_dimens_element_horizontal_middle);
         // 小图文图片宽度计算 (父布局宽度 - 父布局距离两边边距 - （3图图片之间的间距）) / 3（这里3的意思是按照3图的比例计算的宽度）
-        int imageWidth = (int) (mRootView.getMeasuredWidth() - paddingMaxStart - paddingMaxEnd
+        int imageWidth = (int) (ScreenUtils.getScreenWidth() - paddingMaxStart - paddingMaxEnd
                 - (horizontalImagePadding * 2)) / 3;
 
         int imageHeight = (int) (imageWidth / proportion);

@@ -225,7 +225,12 @@ public class PictureTextListSelfRenderAdapter extends RecyclerView.Adapter<Recyc
                 } else {
                     ivMute.setImageResource(R.drawable.ic_app_volume_off);
                 }
-                videoView.setMute(isMute);
+                try {
+                    videoView.setMute(isMute);
+                } catch (Exception e) {
+                    HiAdsLog.e(LOG_TAG, e.getMessage());
+                }
+
             });
             tvReplay.setOnClickListener(v -> {
                 // 重播

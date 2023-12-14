@@ -1,5 +1,7 @@
 package com.hihonor.adsdk.demo.external.picturetext.holder;
 
+import java.util.List;
+
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -17,13 +19,12 @@ import com.hihonor.adsdk.base.api.feed.PictureTextExpressAd;
 import com.hihonor.adsdk.base.bean.Style;
 import com.hihonor.adsdk.base.log.HiAdsLog;
 import com.hihonor.adsdk.base.widget.base.AdFlagCloseView;
-import com.hihonor.adsdk.base.widget.download.DownLoadButton;
+import com.hihonor.adsdk.base.widget.download.HnDownloadButton;
 import com.hihonor.adsdk.demo.external.R;
 import com.hihonor.adsdk.demo.external.utils.DensityUtil;
 import com.hihonor.adsdk.demo.external.utils.GlideUtils;
 import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
-
-import java.util.List;
+import com.hihonor.adsdk.picturetextad.PictureTextAdRootView;
 
 /**
  * 功能描述
@@ -36,11 +37,13 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
     protected RelativeLayout adBrandAutoSizeLayout;
     protected TextView brandNameTextView;
     protected View adLandingLayout;
-    protected DownLoadButton downLoadButton;
+    protected HnDownloadButton downLoadButton;
     protected float cornerRadius;
     protected TextView titleView;
     protected AdFlagCloseView adFlagView;
     protected AdFlagCloseView adFlagCloseView;
+
+    protected PictureTextAdRootView pictureTextAdRootView;
     public BaseViewHolder(@NonNull View itemView) {
         super(itemView);
         mRootView = itemView;
@@ -51,6 +54,7 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         titleView = itemView.findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_title);
         adFlagView = itemView.findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_flag_view);
         adFlagCloseView = itemView.findViewById(com.hihonor.adsdk.picturetextad.R.id.ad_close_view);
+        pictureTextAdRootView = itemView.findViewById(com.hihonor.adsdk.picturetextad.R.id.root_view);
     }
 
     protected void bindData(@NonNull PictureTextExpressAd baseAd) {
@@ -63,6 +67,7 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
                 ((ViewGroup)parent).removeView(mRootView);
             }
         });
+        pictureTextAdRootView.setAd(baseAd);
         renderTextView(baseAd);
     }
     protected  <T extends View> T findViewById(@IdRes int id) {

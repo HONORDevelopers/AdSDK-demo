@@ -97,6 +97,7 @@ public class SplashDefaultActivity extends Activity {
                 HiAdsLog.e(TAG, "onLoadSuccess, mRootView is null");
                 return;
             }
+            HiAdsLog.i(TAG, "onLoadSuccess isCachedData = " + mSplashExpressAd.isCachedData());
             View splashView = splashExpressAd.getExpressAdView();
             splashExpressAd.setLogoResId(R.drawable.ic_launcher_background);
             splashExpressAd.setMediaNameString(getString(R.string.app_market));
@@ -174,7 +175,7 @@ public class SplashDefaultActivity extends Activity {
          */
         @Override
         public void onFailed(String code, String errorMsg) {
-            ToastUtil.showShortToast(getString(R.string.splash_request_failed));
+            ToastUtil.showShortToast("onFailed: code: " + code + ", errorMsg: " + errorMsg);
             HiAdsLog.i(TAG, "onFailed: code: " + code + ", errorMsg: " + errorMsg);
             Intent intent = new Intent(SplashDefaultActivity.this, MainActivity.class);
             startActivity(intent);
