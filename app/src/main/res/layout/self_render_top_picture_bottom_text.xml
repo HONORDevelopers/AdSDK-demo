@@ -2,6 +2,7 @@
 <com.hihonor.adsdk.picturetextad.PictureTextAdRootView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:id="@+id/root_view"
     android:paddingStart="@dimen/ads_app_magic_dimens_max_start"
     android:paddingEnd="@dimen/ads_app_magic_dimens_max_end"
     android:paddingTop="@dimen/ads_app_magic_dimens_element_vertical_large"

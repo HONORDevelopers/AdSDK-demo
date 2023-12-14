@@ -16,6 +16,7 @@ import com.hihonor.adsdk.base.bean.DislikeInfo;
 import com.hihonor.adsdk.base.callback.AdListener;
 import com.hihonor.adsdk.base.callback.DislikeItemClickListener;
 import com.hihonor.adsdk.base.log.HiAdsLog;
+import com.hihonor.adsdk.base.utils.ToastUtil;
 import com.hihonor.adsdk.demo.external.R;
 import com.hihonor.adsdk.demo.external.common.BaseActivity;
 
@@ -36,12 +37,7 @@ public class BannerDefaultActivity extends BaseActivity {
     /**
      * 广告位ID
      */
-    private final String mSlotId = "1698586284462047232";
-
-    /**
-     * 轮播时间
-     */
-    private final long INTERVAL_TIME = 2000;
+    private final String mSlotId = "1730592200936521728";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +144,6 @@ public class BannerDefaultActivity extends BaseActivity {
                     Toast.makeText(BannerDefaultActivity.this, getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
                 }
             });
-            bannerExpressAd.setIntervalTime(INTERVAL_TIME);
             // step3：在请求成功回调里，使用返回的广告对象作渲染处理。
             // 注意： addView前需要把添加广告的容器rootView将控件上所有的view调用removeAllViews方法移除。
             mRootView.removeAllViews();
@@ -165,7 +160,7 @@ public class BannerDefaultActivity extends BaseActivity {
         @Override
         public void onFailed(String code, String errorMsg) {
             HiAdsLog.i(TAG, "onFailed: code: " + code + ", errorMsg: " + errorMsg);
-            Toast.makeText(BannerDefaultActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
+            ToastUtil.showShortToast("onFailed: code: " + code + ", errorMsg: " + errorMsg);
         }
     };
 

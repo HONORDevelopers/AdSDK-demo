@@ -3,13 +3,14 @@ package com.hihonor.adsdk.demo.external.picturetext.holder;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import com.hihonor.adsdk.base.api.feed.PictureTextExpressAd;
-import com.hihonor.adsdk.base.widget.download.DownLoadButton;
+import com.hihonor.adsdk.base.widget.download.HnDownloadButton;
 import com.hihonor.adsdk.demo.external.utils.Constants;
 import com.hihonor.adsdk.demo.external.utils.ScreenUtils;
 
@@ -22,7 +23,7 @@ public class AppViewHolder extends BaseViewHolder{
     private static final int DP_VALUE = 4;
     private final ImageView adImageView;
 
-    private final DownLoadButton adDownloadView;
+    private final HnDownloadButton adDownloadView;
     private final TextView adTitle, adContent;
     public AppViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -36,8 +37,11 @@ public class AppViewHolder extends BaseViewHolder{
 
     @Override
     public void bindData(@NonNull PictureTextExpressAd baseAd) {
+        if (baseAd == null) {
+            return;
+        }
         Context context = mRootView.getContext();
-
+        pictureTextAdRootView.setAd(baseAd);
         setPictureImage(baseAd);
         // 应用下载广告的主标题对应的字段是品牌名称，副标题对应的字段是广告标题
         adTitle.setText(baseAd.getBrand());
@@ -55,6 +59,11 @@ public class AppViewHolder extends BaseViewHolder{
         adFlagCloseView.setViewPadding(0, 0, 0, 0);
         Drawable closeIconDrawable = context.getDrawable(com.hihonor.adsdk.picturetextad.R.drawable.honor_ads_icsvg_public_cancel_regular);
         adFlagCloseView.setCloseIconDrawable(closeIconDrawable);
+        adFlagCloseView.setDislikeItemClickListener((i, dislikeInfo, view) -> {
+            if (itemView instanceof ViewGroup) {
+                ((ViewGroup) itemView).removeAllViews();
+            }
+        });
 
         adDownloadView.setBaseAd(baseAd, Constants.SCENE_TYPE.AD_DEFAULT);
     }

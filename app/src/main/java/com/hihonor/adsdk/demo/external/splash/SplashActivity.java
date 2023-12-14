@@ -2,6 +2,7 @@ package com.hihonor.adsdk.demo.external.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -24,6 +25,8 @@ public class SplashActivity extends BaseActivity {
      * 广告位ID
      */
     private final String slotId = "1698591998676959232";
+
+    private TextView preCacheText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +52,8 @@ public class SplashActivity extends BaseActivity {
         findViewById(R.id.bt_query_ad_pre_cache_count).setOnClickListener(view -> {
             int adCacheCount = HnAds.get().getAdCacheCount(slotId);
             HiAdsLog.i(TAG, "adCacheCount = " + adCacheCount);
+            preCacheText = findViewById(R.id.ads_cache_size);
+            preCacheText.setText(String.valueOf(adCacheCount));
         });
     }
 

@@ -1,7 +1,3 @@
-<!--
-  ~ Copyright (c) Honor Device Co., Ltd. 2022-2022. All rights reserved.
-  -->
-
 <resources>
     <string name="app_name">Honor Ad Platform</string>
 
@@ -12,7 +8,7 @@
     <string name="app_splash_ad">Splash Ads</string>
     <string name="app_interstital_ad">Interstital Ads</string>
     <string name="app_banner_default">Banner Default</string>
-    <string name="app_banner_gallery_self">Banner Gallery Self</string>
+    <string name="app_banner_gallery_self">Banner Self Render By ViewPager</string>
     <string name="app_banner_gallery">Banner Gallery</string>
     <string name="app_picture_text_ad">Feed Ads</string>
     <string name="app_search_native_ad">Search Native Ads</string>

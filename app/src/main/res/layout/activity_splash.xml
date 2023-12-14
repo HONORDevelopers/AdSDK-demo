@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/root_view"
-  android:orientation="vertical"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,14 +37,29 @@
             android:layout_marginEnd="12dp"
             android:text="@string/load_pre_cache"/>
 
-        <Button
-            android:id="@+id/bt_query_ad_pre_cache_count"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:text="@string/query_ad_pre_cache_count"/>
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/bt_query_ad_pre_cache_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="@string/query_ad_pre_cache_count"/>
+
+            <TextView
+                android:id="@+id/ads_cache_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="0" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

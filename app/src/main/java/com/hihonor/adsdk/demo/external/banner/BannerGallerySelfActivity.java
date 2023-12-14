@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide;
 import com.hihonor.adsdk.banner.api.BannerAdLoad;
 import com.hihonor.adsdk.banner.api.BannerAdRootView;
 import com.hihonor.adsdk.base.AdSlot;
-import com.hihonor.adsdk.base.ErrorCode;
 import com.hihonor.adsdk.base.api.banner.BannerAdLoadListener;
 import com.hihonor.adsdk.base.api.banner.BannerExpressAd;
 import com.hihonor.adsdk.base.bean.DislikeInfo;
@@ -39,7 +38,7 @@ public class BannerGallerySelfActivity extends BaseActivity {
     /**
      * 广告位ID
      */
-    private String mSlotId = "1698586284462047232";
+    private String mSlotId = "1698586775313055744";
 
     private final static int MEDIA_ITEM_COUNT = 5;
 
@@ -134,6 +133,85 @@ public class BannerGallerySelfActivity extends BaseActivity {
             mViewPager.setVisibility(View.VISIBLE);
         }
 
+        private void addAdView(BannerExpressAd bannerExpressAd) {
+            View inflate = LayoutInflater.from(BannerGallerySelfActivity.this).inflate(R.layout.page_ad_layout, null);
+            BannerAdRootView bannerAdRootView = inflate.findViewById(R.id.ad_layout);
+            ImageView adImageView = inflate.findViewById(R.id.ad_banner_img);
+            List<String> images = bannerExpressAd.getImages();
+            int radius = 0;
+            if (bannerExpressAd.getStyle() != null) {
+                radius = bannerExpressAd.getStyle().getBorderRadius();
+            }
+            if (images != null && !images.isEmpty()) {
+                GlideUtils.loadImage(BannerGallerySelfActivity.this, images.get(0), adImageView, radius);
+            }
+            AdFlagCloseView adFlagCloseView = inflate.findViewById(R.id.ad_flag_close_view);
+            bannerAdRootView.setAdCloseView(adFlagCloseView);
+            // 设置广告负反馈回调监听器
+            bannerAdRootView.setDislikeItemClickListener(new DislikeItemClickListener() {
+                @Override
+                public void onItemClick(int position, @Nullable DislikeInfo dislikeInfo, @Nullable View target) {
+                    Iterator<View> iterator = mChildViewList.iterator();
+                    while (iterator.hasNext()) {
+                        View view = iterator.next();
+                        if (view instanceof BannerAdRootView) {
+                            iterator.remove();
+                            mBannerPageAdapter.updateAndNotify(mChildViewList);
+                            mViewPager.setCurrentItem(0);
+                            ToastUtil.showShortToast(R.string.app_ad_close_tip);
+                            break;
+                        }
+                    }
+                }
+            });
+            // 注册广告事件监听器，您可根据需求实现接口并按需重写您需要接收通知的方法。
+            bannerExpressAd.setAdListener(new AdListener() {
+
+                /**
+                 * 广告曝光时回调
+                 */
+                @Override
+                public void onAdImpression() {
+                    super.onAdImpression();
+                    HiAdsLog.i(TAG, "onAdImpression...");
+                    Toast.makeText(BannerGallerySelfActivity.this, getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                 * 广告被点击时回调
+                 */
+                @Override
+                public void onAdClicked() {
+                    super.onAdClicked();
+                    HiAdsLog.i(TAG, "onAdClicked...");
+                    Toast.makeText(BannerGallerySelfActivity.this, getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                 * 广告关闭时回调
+                 */
+                @Override
+                public void onAdClosed() {
+                    super.onAdClosed();
+                    HiAdsLog.i(TAG, "onAdClosed...");
+                    Toast.makeText(BannerGallerySelfActivity.this, getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
+                    releaseAd();
+                }
+
+                /**
+                 * 广告成功跳转小程序时回调
+                 */
+                @Override
+                public void onMiniAppStarted() {
+                    super.onMiniAppStarted();
+                    HiAdsLog.i(TAG, "onMiniAppStarted...");
+                    Toast.makeText(BannerGallerySelfActivity.this, getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
+                }
+            });
+            bannerAdRootView.setAd(bannerExpressAd);
+            mChildViewList.add(bannerAdRootView);
+        }
+
         /**
          * 广告加载失败
          *
@@ -147,90 +225,9 @@ public class BannerGallerySelfActivity extends BaseActivity {
             mAdLoadLayout.setVisibility(View.GONE);
             mTextErrorInfo.setVisibility(View.VISIBLE);
             mViewPager.setVisibility(View.GONE);
-            if (code.equals(String.valueOf(ErrorCode.AD_SLOT_ID_EMPTY))) {
-                ToastUtil.showShortToast(getString(R.string.slotid_null));
-            }
+            ToastUtil.showShortToast("onFailed: code: " + code + ", errorMsg: " + errorMsg);
         }
     };
-
-    private void addAdView(BannerExpressAd bannerExpressAd) {
-        View inflate = LayoutInflater.from(BannerGallerySelfActivity.this).inflate(R.layout.page_ad_layout, null);
-        BannerAdRootView bannerAdRootView = inflate.findViewById(R.id.ad_layout);
-        ImageView adImageView = inflate.findViewById(R.id.ad_banner_img);
-        List<String> images = bannerExpressAd.getImages();
-        int radius = 0;
-        if (bannerExpressAd.getStyle() != null) {
-            radius = bannerExpressAd.getStyle().getBorderRadius();
-        }
-        if (images != null && !images.isEmpty()) {
-            GlideUtils.loadImage(BannerGallerySelfActivity.this, images.get(0),adImageView, radius);
-        }
-        AdFlagCloseView adFlagCloseView = inflate.findViewById(R.id.ad_flag_close_view);
-        bannerAdRootView.setAdCloseView(adFlagCloseView);
-        // 设置广告负反馈回调监听器
-        bannerAdRootView.setDislikeItemClickListener(new DislikeItemClickListener(){
-            @Override
-            public void onItemClick(int position, @Nullable DislikeInfo dislikeInfo, @Nullable View target) {
-                Iterator<View> iterator = mChildViewList.iterator();
-                while (iterator.hasNext()) {
-                    View view = iterator.next();
-                    if (view instanceof BannerAdRootView) {
-                        iterator.remove();
-                        mBannerPageAdapter.updateAndNotify(mChildViewList);
-                        mViewPager.setCurrentItem(0);
-                        ToastUtil.showShortToast(R.string.app_ad_close_tip);
-                        break;
-                    }
-                }
-            }
-        });
-        // 注册广告事件监听器，您可根据需求实现接口并按需重写您需要接收通知的方法。
-        bannerExpressAd.setAdListener(new AdListener(){
-
-            /**
-             * 广告曝光时回调
-             */
-            @Override
-            public void onAdImpression() {
-                super.onAdImpression();
-                HiAdsLog.i(TAG, "onAdImpression...");
-                Toast.makeText(BannerGallerySelfActivity.this, getString(R.string.ad_impression_success), Toast.LENGTH_SHORT).show();
-            }
-
-            /**
-             * 广告被点击时回调
-             */
-            @Override
-            public void onAdClicked() {
-                super.onAdClicked();
-                HiAdsLog.i(TAG, "onAdClicked...");
-                Toast.makeText(BannerGallerySelfActivity.this, getString(R.string.ad_clicked), Toast.LENGTH_SHORT).show();
-            }
-
-            /**
-             * 广告关闭时回调
-             */
-            @Override
-            public void onAdClosed() {
-                super.onAdClosed();
-                HiAdsLog.i(TAG, "onAdClosed...");
-                Toast.makeText(BannerGallerySelfActivity.this, getString(R.string.app_ad_close_tip), Toast.LENGTH_SHORT).show();
-                releaseAd();
-            }
-
-            /**
-             * 广告成功跳转小程序时回调
-             */
-            @Override
-            public void onMiniAppStarted() {
-                super.onMiniAppStarted();
-                HiAdsLog.i(TAG, "onMiniAppStarted...");
-                Toast.makeText(BannerGallerySelfActivity.this, getString(R.string.miniapp_start), Toast.LENGTH_SHORT).show();
-            }
-        });
-        bannerAdRootView.setAd(bannerExpressAd);
-        mChildViewList.add(bannerAdRootView);
-    }
 
     /**
      * 页面不可见需要移除广告view
@@ -250,5 +247,4 @@ public class BannerGallerySelfActivity extends BaseActivity {
             mBannerExpressAd.release();
         }
     }
-
 }

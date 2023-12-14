@@ -89,6 +89,8 @@
                 android:layout_marginStart="5dp"
                 android:fontFamily="@string/ads_app_magic_text_font_family_regular"
                 android:lines="1"
+                android:maxEms="6"
+                android:ellipsize="end"
                 android:textAlignment="viewStart"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/logo_view"
