@@ -1,0 +1,91 @@
+<!--
+  ~ Copyright (c) Honor Device Co., Ltd. 2021-2023. All rights reserved.
+  -->
+
+<resources>
+    <string name="app_name">Honor Ad Platform</string>
+
+    <!--    首页item-->
+    <string name="app_native_ad">Native Ads</string>
+    <string name="app_reward_ad">Reward Ads</string>
+    <string name="app_banner_ad">Banner Ads</string>
+    <string name="app_splash_ad">Splash Ads</string>
+    <string name="app_interstital_ad">Interstital Ads</string>
+    <string name="app_banner_default">Banner Default</string>
+    <string name="app_banner_gallery_self">Banner Self Render By ViewPager</string>
+    <string name="app_banner_gallery">Banner Gallery</string>
+    <string name="app_picture_text_ad">Feed Ads</string>
+    <string name="app_search_native_ad">Search Native Ads</string>
+    <string name="app_test_tools">Tools</string>
+    <string name="app_picture_text_template_render_ad">Feed Template Render Ads</string>
+    <string name="app_picture_text_template_render_big">Self Render Ads:Big Picture</string>
+    <string name="app_picture_text_template_render_small">Self Render Ads:Small Picture</string>
+    <string name="app_picture_text_template_render_three">Self Render Ads:Three Pictures</string>
+    <string name="app_picture_text_template_render_app">Self Render Ads:App Picture</string>
+    <string name="app_picture_text_template_render_landscape">Self Render Ads:Landscape Video</string>
+    <string name="app_picture_text_template_render_portrait">Self Render Ads:Portrait Video</string>
+    <string name="app_picture_text_self_render_ad">Feed Self Render Ads</string>
+    <string name="app_picture_text_install_ad">Install Ads</string>
+    <string name="banner_describe">Select the corresponding ad size and click Load Ads</string>
+    <string name="banner_Interval_describe">The default rotation time is 30s</string>
+    <string name="app_load_ad">Load ads</string>
+    <string name="app_banner_720">1280*720</string>
+    <string name="app_banner_640">1280*640</string>
+    <string name="app_banner_1080">1080*180</string>
+    <string name="app_ad_close_tip">Closed Ad</string>
+    <string name="app_download">Download</string>
+    <string name="app_replay">Replay</string>
+
+    <string name="ads_app_magic_text_font_family_medium" translatable="false">HnChinese-medium</string>
+    <string name="ads_app_magic_text_font_family_regular" translatable="false">sans-serif</string>
+    <!-- 非首页item-->
+    <string name="ad_item">Ads</string>
+    <string name="loading_item">Loading...</string>
+    <string name="error_msg">Error Msg</string>
+    <string name="load_splash_portrait_picture_1080_1920">Template Rendering: Picture 1080*1920</string>
+    <string name="load_splash_portrait_picture_1080_1620">Template Rendering: Picture 1080*1620</string>
+    <string name="load_splash_portrait_video_720_1280">Template Rendering: Video 720*1280</string>
+    <string name="load_splash_landscape_video_1280_720">Template Rendering: Video 1280*720</string>
+    <string name="load_self_Splash">Load Self Splash</string>
+    <string name="load_pre_cache">Load Pre Cache</string>
+    <string name="load_reward_landscape_1280_720">Load landscape 1280*720 rewarded video ads</string>
+    <string name="load_reward_portrait_1280_720">Load portrait 1280*720 rewarded video ads</string>
+    <string name="load_reward_landscape_720_1280">Load landscape 720*1280 rewarded video ads</string>
+    <string name="load_reward_portrait_720_1280">Load portrait 720*1280 rewarded video ads</string>
+    <string name="query_ad_pre_cache_count">Load Ad Pre Cache Count</string>
+    <string name="load_interstitial">Load Interstitial</string>
+    <string name="load_interstitial_picture_1280_720_landscape">Interstitial picture: screen landscape 1280*720</string>
+    <string name="load_interstitial_picture_1280_720_portrait">Interstitial picture: screen portrait 1280*720</string>
+    <string name="load_interstitial_picture_720_1280_landscape">Interstitial picture: screen landscape 720*1280</string>
+    <string name="load_interstitial_picture_720_1280_portrait">Interstitial picture: screen portrait 720*1280</string>
+    <string name="load_interstitial_video_1280_720_landscape">Interstitial video: screen landscape 1280*720</string>
+    <string name="load_interstitial_video_1280_720_portrait">Interstitial video: screen portrait 1280*720</string>
+    <string name="load_interstitial_video_720_1280_landscape">Interstitial video: screen landscape 720*1280</string>
+    <string name="load_interstitial_video_720_1280_portrait">Interstitial video: screen portrait 720*1280</string>
+    <string name="media_data">Media Data</string>
+    <string name="init_falied">Init Failed</string>
+    <string name="ad_impression_success">Impression Success</string>
+    <string name="ad_impression_failed">Impression Failed</string>
+    <string name="ad_clicked">Ad Clicked</string>
+    <string name="item_clicked">item Clicked</string>
+    <string name="miniapp_start">MiniApp Started</string>
+    <string name="ad_skip">Ad Skip</string>
+    <string name="slotid_null">Slotid is Null</string>
+    <string name="click">On Click Item</string>
+    <string name="application_name">APP Name</string>
+    <string name="application_version">\t\nApp Version</string>
+    <string name="app_package">\t\nApp Package</string>
+    <string name="developer_name">\t\nDeveloper Name</string>
+    <string name="permissions_url">\t\nPermissions Url</string>
+    <string name="privacy_agreement_url">\t\nPrivacy Agreement Url</string>
+    <string name="home_page">\t\nHome Page</string>
+    <string name="wrong_msg">Is Wrong</string>
+    <string name="get_reward">Get Reward</string>
+    <string name="reward_item">Q Order roll</string>
+    <string name="app_market">APP Market</string>
+    <string name="app_copy_right">Copyright ©2021-2023 Honor All Rights Reserved</string>
+    <string name="splash_request_failed">Splash Request Failed</string>
+    <string name="slot_empty_msg">Please select ad size first</string>
+    <string name="load_success">Load Success</string>
+    <string name="demo_ad_sdk_version">SDK Version </string>
+</resources>

@@ -1,0 +1,30 @@
+android {
+    //自定义打包配置
+    flavorDimensions "default"
+    productFlavors {
+        env_devp {
+            buildConfigField 'boolean', 'RELEASE_VERSION', 'false'
+            //grs开关
+            buildConfigField 'boolean', 'SUPPORT_GRS', 'true'
+            dimension "default"
+            buildConfigField 'boolean', 'SUPPORT_SEND_BOX', "${SUPPORT_SEND_BOX}"
+            buildConfigField 'boolean', 'isOversea', "${isOversea}"
+        }
+        env_test {
+            buildConfigField 'boolean', 'RELEASE_VERSION', 'false'
+            //grs开关
+            buildConfigField 'boolean', 'SUPPORT_GRS', 'true'
+            dimension "default"
+            buildConfigField 'boolean', 'SUPPORT_SEND_BOX', "${SUPPORT_SEND_BOX}"
+            buildConfigField 'boolean', 'isOversea', "${isOversea}"
+        }
+        env_prod {
+            buildConfigField 'boolean', 'RELEASE_VERSION', 'true'
+            //grs开关
+            buildConfigField 'boolean', 'SUPPORT_GRS', 'true'
+            dimension "default"
+            buildConfigField 'boolean', 'SUPPORT_SEND_BOX', "${SUPPORT_SEND_BOX}"
+            buildConfigField 'boolean', 'isOversea', "${isOversea}"
+        }
+    }
+}

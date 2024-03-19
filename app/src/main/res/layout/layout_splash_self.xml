@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hihonor.adsdk.splash.view.SplashAdRootView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/splash_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ads_splash_ad_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:scaleType="centerCrop" />
+
+    <FrameLayout
+        android:id="@+id/ads_splash_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/ads_app_magic_dimens_element_vertical_large"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:id="@+id/ads_icon_ima_layout"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/ads_app_magic_dimens_element_horizontal_large_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ads_splash_icon_img"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="fitXY" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/ads_media_name"
+                android:text="应用市场"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:textSize="@dimen/ads_app_magic_text_size_body1"
+                android:textColor="@color/ad_base_color_text_splash"
+                android:fontFamily="@string/ads_app_magic_text_font_family_medium"
+                android:layout_marginStart="@dimen/ads_app_magic_dimens_element_horizontal_middle"
+                android:layout_marginEnd="@dimen/ads_app_magic_dimens_element_horizontal_middle"
+                android:shadowColor="@color/ad_base_splash_text_shadow"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                tools:text="应用名称"/>
+
+            <com.hihonor.adsdk.base.widget.base.CountdownView
+                android:id="@+id/ad_countdown"
+                android:layout_marginEnd="@dimen/ads_app_magic_dimens_element_horizontal_large_2"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/ads_app_magic_text_size_body3"
+                android:textColor="@color/ad_base_color_text_splash"
+                android:fontFamily="@string/ads_app_magic_text_font_family_regular"
+                android:gravity="center"
+                android:layout_width="52dp"
+                android:layout_height="24dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/ad_animation_view"
+                android:layout_width="72dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="100dp"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true"/>
+
+            <TextView
+                android:text="摇动手机"
+                android:shadowColor="@color/ad_base_splash_text_shadow"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:id="@+id/ad_action_prompt"
+                android:textSize="@dimen/ads_app_magic_text_size_subtitle1"
+                android:textColor="@color/ad_base_color_text_splash"
+                android:fontFamily="@string/ads_app_magic_text_font_family_medium"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <FrameLayout
+                android:id="@+id/ads_click_layout"
+                android:visibility="gone"
+                android:background="@drawable/honor_ads_click_bg"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:layout_width="275dp"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:text="跳转至详情页或第三方界面"
+                    android:shadowColor="@color/ad_base_splash_text_shadow"
+                    android:shadowDx="0"
+                    android:shadowDy="2"
+                    android:shadowRadius="4"
+                    android:id="@+id/ad_action_click_result"
+                    android:textSize="@dimen/ads_app_magic_text_size_body1"
+                    android:textColor="@color/ad_base_color_text_splash"
+                    android:fontFamily="@string/ads_app_magic_text_font_family_regular"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/ads_click_button_sweep"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:lottie_fileName="button_sweep.json"
+                    android:layout_gravity="center"
+                    app:lottie_loop="true"
+                    app:lottie_autoPlay="true"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:text="跳转至详情页或第三方界面"
+                android:shadowColor="@color/ad_base_splash_text_shadow"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:layout_marginTop="4dp"
+                android:id="@+id/ad_action_result"
+                android:textSize="@dimen/ads_app_magic_text_size_body2"
+                android:textColor="@color/ad_base_color_text_splash"
+                android:fontFamily="@string/ads_app_magic_text_font_family_regular"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:text="广告"
+            android:id="@+id/ad_flag"
+            android:textSize="@dimen/ads_app_magic_text_size_body2"
+            android:shadowColor="@color/ad_base_splash_text_shadow"
+            android:shadowDx="0"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:textColor="@color/ad_base_color_text_splash"
+            android:fontFamily="@string/ads_app_magic_text_font_family_regular"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:layout_width="52dp"
+            android:layout_height="24dp"/>
+
+    </FrameLayout>
+
+</com.hihonor.adsdk.splash.view.SplashAdRootView>

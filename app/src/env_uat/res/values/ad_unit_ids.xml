@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Honor Device Co., Ltd. 2021-2024. All rights reserved.
+  -->
+
+<resources>
+    <!--  媒体相关  -->
+    <string name="app_id" translatable="false">1640545857217757184</string>
+    <string name="app_key" translatable="false">PuWq5LFla2vJ8XvZdHxsD7s6oYFg3zAGnL9ACczccvU=</string>
+
+    <!--  信息流广告位相关  -->
+    <!--  现网联调-信息流广告-大图文-1280*720-->
+    <string name="feed_big_picture_unit_id" translatable="false">1698587684968857600</string>
+    <!--  现网联调-信息流广告-小图文-225*150-->
+    <string name="feed_small_picture_unit_id" translatable="false">1698588181163147264</string>
+    <!--  现网联调-信息流-三图文-225*150-->
+    <string name="feed_three_picture_unit_id" translatable="false">1698588360482488320</string>
+    <!--  现网联调-信息流-应用图文-258*258-->
+    <string name="feed_app_small_picture_unit_id" translatable="false">1698588684039225344</string>
+    <!--  现网联调-信息流-横版视频-1280*720-->
+    <string name="feed_hor_video_unit_id" translatable="false">1698588952478875648</string>
+    <!--  现网联调-信息流-竖版视频-720*1280-->
+    <string name="feed_ver_video_unit_id" translatable="false">1698589315089301504</string>
+
+    <!--  banner相关  -->
+    <!--  现网联调-图片广告-1280*720-->
+    <string name="banner_1280_720_unit_id" translatable="false">1698586284462047232</string>
+    <!--  现网联调-Banner-1080*180-->
+    <string name="banner_1080_180_unit_id" translatable="false">1730592200936521728</string>
+    <!--  现网联调-图片广告-1280*640-->
+    <string name="banner_1280_640_unit_id" translatable="false">1698586775313055744</string>
+
+    <!--  激励相关  -->
+    <!--  现网联调-激励视频广告-1280*720-屏幕横向-->
+    <string name="reward_1280_720_land_unit_id" translatable="false">1698589518466908160</string>
+    <!--  现网联调-激励视频广告-1280*720-屏幕竖向-->
+    <string name="reward_1280_720_portrait_unit_id" translatable="false">1698590675276922880</string>
+    <!--  现网联调-激励视频广告-720*1280-屏幕横向-->
+    <string name="reward_720_1280_land_unit_id" translatable="false">1698590942496030720</string>
+    <!--  现网联调-激励视频广告-720*1280-屏幕竖向-->
+    <string name="reward_720_1280_portrait_unit_id" translatable="false">1698591677447143424</string>
+
+    <!--  开屏相关  -->
+    <!--  现网联调-开屏广告-1080*1920-->
+    <string name="splash_1080_1920_unit_id" translatable="false">1698591831403266048</string>
+    <!--  现网联调-开屏广告-1080*1620-->
+    <string name="splash_1080_1620_unit_id" translatable="false">1698591998676959232</string>
+    <!--  现网联调-开屏广告-横版视频1280*720-->
+    <string name="splash_1280_720_unit_id" translatable="false">1707057697284030464</string>
+    <!--  现网联调-开屏广告-竖版视频720*1280-->
+    <string name="splash_720_1280_unit_id" translatable="false">1707057834054909952</string>
+
+    <!--  插屏相关  -->
+    <!--  现网联调-插屏图片-1280*720-屏幕横向-->
+    <string name="interstitial_1280_720_land_unit_id" translatable="false">1698592287860719616</string>
+    <!--  现网联调-插屏图片-1280*720-屏幕竖向-->
+    <string name="interstitial_1280_720_portrait_unit_id" translatable="false">1698592495923232768</string>
+    <!--  现网联调-插屏图片-720*1280-屏幕横向-->
+    <string name="interstitial_720_1280_land_unit_id" translatable="false">1698592684151406592</string>
+    <!--  现网联调-插屏图片-720*1280-屏幕竖向-->
+    <string name="interstitial_720_1280_portrait_unit_id" translatable="false">1698593225409560576</string>
+    <!--  现网联调-插屏视频-1280*720-屏幕横向-->
+    <string name="interstitial_1280_720_land_video_unit_id" translatable="false">1698593396864319488</string>
+    <!--  现网联调-插屏视频-1280*720-屏幕竖向-->
+    <string name="interstitial_1280_720_portrait_video_unit_id" translatable="false">1698593563097169920</string>
+    <!--  现网联调-插屏视频-720*1280-屏幕横向-->
+    <string name="interstitial_720_1280_land_video_unit_id" translatable="false">1698593762892578816</string>
+    <!--  现网联调-插屏视频-720*1280-屏幕竖向-->
+    <string name="interstitial_720_1280_portrait_video_unit_id" translatable="false">1698593972729413632</string>
+</resources>
